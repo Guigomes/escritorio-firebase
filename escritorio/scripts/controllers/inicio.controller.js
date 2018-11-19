@@ -1,7 +1,7 @@
 angular.module("app").controller("InicioController", InicioController);
 angular.module("app").controller("DialogController", DialogController);
 
-function InicioController($location, $anchorScroll, DadosService) {
+function InicioController($location, $anchorScroll, DadosService, Textos) {
   var vm = this;
   vm.mostrarInstalar = false;
 
@@ -14,6 +14,13 @@ function InicioController($location, $anchorScroll, DadosService) {
 
 
     $anchorScroll();
+
+    console.log("Textox", Textos);
+    Textos.adicionarTexto(1, "Guilherme Gomes da Silva123").then((res)=>{
+      console.log("Deu certo", res);
+    },(erro)=>{
+console.log("Error", erro);
+    });
 };
 
 }

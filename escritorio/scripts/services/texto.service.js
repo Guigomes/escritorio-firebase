@@ -1,26 +1,23 @@
 (function() {
   "use strict";
 
-  angular.module("app").factory("User", User);
+  angular.module("app").factory("Textos", Textos);
 
-  function User(Usuario) {
+  function Textos() {
     return {
-      adicionarUsuario: adicionarUsuario,
-      buscarUsuario: buscarUsuario
+      adicionarTexto: adicionarTexto
     };
 
-    function adicionarUsuario(nome, level, time) {
-      let userId = firebase.auth().currentUser.uid;
-      console.log(userId + " - " + nome + " - " + level + " - " + time);
+    function adicionarTexto(id, texto) {
+     alert("TESTE");
       return firebase
         .database()
-        .ref("users/" + userId)
+        .ref("textos/" + id)
         .set({
-          nome: nome,
-          level: level,
-          time: time
+          texto: texto
         });
     }
+
     function buscarUsuario(userId) {
       if (userId === undefined) {
         let usuario = Usuario.getUsuario();

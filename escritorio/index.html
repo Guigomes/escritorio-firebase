@@ -36,7 +36,11 @@
     <!-- Aplicação -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/authentication.service.js"></script>
+    <script src="scripts/services/texto.service.js"></script>
     <script src="scripts/controllers/inicio.controller.js"></script>    
+    <script src="scripts/controllers/login.controller.js"></script>    
+    <script src="scripts/controllers/admin.controller.js"></script>    
+
     <script src="scripts/app-route.js"></script>
     <script src="scripts/ginasios.factory.js"></script>
 
@@ -59,6 +63,51 @@
   </head>
   <body ng-app="app" ng-cloak style="overflow:scroll">
     
+
+<div class="md-toolbar-tools toolbar-principal toolbar" style="background-color:azure">
+  <md-button class="md-icon-button" ng-if="!vm.hideMenuButton()" ng-click="vm.openSideNav('left')" aria-label="side navigation">
+      <md-icon md-font-icon="zmdi zmdi-menu"></md-icon>
+  </md-button>
+
+
+  <div layout="row" layout-align="space-around center" flex="100">
+
+      <div layout="column">
+          <img src="../assets/header.png" />
+      </div>
+      <div layout="row" layout-align="space-around" flex="100">
+
+          <div layout="column" class="divContato" layout-align="center center">
+              <span>
+                  <md-icon md-font-icon="fa fa-phone"></md-icon>(67) 3324-7775</span>
+              <span>
+                  <md-icon md-font-icon="fa fa-phone"></md-icon>(67) 3382-1530</span>
+          </div>
+          <div layout="column" class="divContato" layout-align="center start">
+              <span>
+                  <md-icon md-font-icon="fa fa-whatsapp" style="color: green"></md-icon>(67) 99902-7770</span>
+              <span>
+                  <md-icon md-font-icon="fa fa-envelope-square"></md-icon>aquariusmsi@terra.com.br
+              </span>
+          </div>
+
+          <div layout="column" class="divContato" layout-align="center start" flex="30">
+
+              <span>Funcionamento</span>
+              <span>Segunda à Sexta</span>
+              <span>08:00h-12:00 / 13:00-17:30h</span>
+          </div>
+
+      </div>
+
+  </div>
+
+
+
+
+
+
+</div>
       <ui-view name="viewContent"></ui-view>
     <script>
       document.addEventListener('DOMContentLoaded', function() {

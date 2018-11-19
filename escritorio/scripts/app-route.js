@@ -18,14 +18,24 @@ angular
           }
         }
       })
-      .state("logado", {
+      .state("admin", {
+        url: "/admin",
+        name: "admin",
+        views: {
+          viewContent: {
+            controller: "LoginController",
+            controllerAs: "vm",
+            templateUrl: "/pages/login.html"
+          }
+        }
+      }).state("logado", {
         url: "/logado",
         name: "logado",
         views: {
           viewContent: {
-            controller: "PrincipalController",
+            controller: "AdminController",
             controllerAs: "vm",
-            templateUrl: "/pages/principal.html"
+            templateUrl: "/pages/admin.html"
           }
         }
       });
