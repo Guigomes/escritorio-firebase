@@ -1,6 +1,210 @@
-<div class="md-toolbar-tools toolbar" style="color: white; background-color:rgb(0, 188, 212);">
+<md-tabs class="md-accent " md-selected="0" md-align-tabs="top" style="height: 100%">
+    <md-tab id="escritorio">
+        <md-tab-label class="primary-back">
+            <md-icon md-font-icon="fa fa-building" class="white"></md-icon>O Escritório
+        </md-tab-label>
+        <md-tab-body>
+
+            <md-card class="md-padding" style="margin-top: 50px;" id="escritorio">
+                <h2>
+                    <a>O Escritório</a>
+                </h2>
+                <md-divider></md-divider>
+
+                <md-card-content class="md-padding" style="text-align: justify">
+                    <div layout="row">
+                        <div layout="column" flex="70">
+                            {{vm.textoQuemSomos}}
+                        </div>
+                        <div layout="column" flex="30">
+                            <img src="../assets/contabilidade.png" />
+                        </div>
+                    </div>
+                </md-card-content>
+
+            </md-card>
+
+        </md-tab-body>
+    </md-tab>
+    <md-tab id="servicos">
+        <md-tab-label>
+            <md-icon md-font-icon="fa fa-book" class="white"></md-icon>
+            Serviços Contábeis
+        </md-tab-label>
+        <md-tab-body>
+
+            <md-card class="md-padding" id="premios">
+                <h2>
+                    <a>Serviços Contábeis</a>
+                </h2>
+                <md-divider></md-divider>
+
+                <md-card-content class="md-padding">
+
+                    <md-card ng-repeat="servico in vm.servicosContabeis" style="float: left; position: relative; max-width: 350px; min-height: 450px !important;">
+                        <div class="card-header">
+                            <h3>{{servico.categoria}}</h3>
+                            <md-divider></md-divider>
+                        </div>
+                        <md-card-content>
+                            <li ng-repeat="serv in servico.servicos">{{serv}}</li>
+                        </md-card-content>
+                    </md-card>
+
+                </md-card-content>
+
+            </md-card>
+        </md-tab-body>
+    </md-tab>
+
+    <md-tab id="fale">
+        <md-tab-label>
+            <md-icon md-font-icon="fa fa-phone" class="white"></md-icon>
+
+            Fale conosco
+        </md-tab-label>
+        <md-tab-body>
+            <md-card class="md-padding" id="contato">
+                <h2>
+                    <a>Fale Conosco</a>
+                </h2>
+                <md-divider></md-divider>
+
+                <md-card-content style="padding-left: 0px !important">
+
+                    <div layout="row">
+                        <div layout="column" flex="40">
+                            <md-card>
+                                <div class="card-header">
+                                    <h5>Entre em contato</h5>
+                                    <md-divider></md-divider>
+                                </div>
+                                <md-card-content class="content-endereco">
+                                    <div layout="column">
+                                        <span>Envie-nos um e-mail e entraremos em contato em breve. Teremos o
+                                            prazer de ajudar.
+                                            Você também
+                                            pode ligar: (67) 3382-1530 | (67) 3324-2775</span>
+                                    </div>
+                                </md-card-content>
+
+                            </md-card>
+                        </div>
+                        <div layout="column" flex="60">
+                            <md-card>
+
+                                <md-card-content>
+                                    <form class="event-dialog-form" name="eventForm">
+                                        <md-input-container class="md-block">
+                                            <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
+
+                                            <label>Nome</label>
+                                            <input ng-model="vm.comunicacao.nome" required>
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
+
+                                            <label>E-mail</label>
+                                            <input ng-model="vm.comunicacao.email" required type="email">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <md-icon md-font-icon="zmdi zmdi-phone"></md-icon>
+
+                                            <label>Telefone</label>
+                                            <input ng-model="vm.comunicacao.telefone" type="tel">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Assunto</label>
+                                            <input ng-model="vm.comunicacao.assunto" required>
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label translate>Mensagem</label>
+                                            <textarea rows="5" ng-model="vm.comunicacao.mensagem"></textarea>
+                                        </md-input-container>
+                                        <md-button class="button-primary">Enviar mensagem</md-button>
+                                    </form>
+                                </md-card-content>
+                                <md-card>
+                        </div>
+
+                    </div>
+
+                </md-card-content>
+
+            </md-card>
+        </md-tab-body>
+    </md-tab>
+
+    <md-tab id="localizacao">
+        <md-tab-label>
+            <md-icon md-font-icon="fa fa-map" class="white"></md-icon>
+            Localização
+        </md-tab-label>
+        <md-tab-body>
+            <md-card class="md-padding" id="localizacao">
+                <h2>
+                    <a>Localização</a>
+                </h2>
+                <md-divider></md-divider>
 
 
+
+
+                <md-card-content style="padding-left: 0px !important">
+                    <div layout="row">
+                        <div layout="column" flex="30">
+                            <md-card>
+                                <div class="card-header">
+                                    <h5>Endereço</h5>
+                                    <md-divider></md-divider>
+                                </div>
+                                <md-card-content class="content-endereco">
+                                    <div layout="column">
+                                        <span>Rua Tonico de Carvalho, 232</span>
+                                        <span>Vila Carvalho</span>
+                                        <span>Cep: 79097-070</span>
+                                        <span>Campo Grande - MS</span>
+                                    </div>
+                                </md-card-content>
+
+                            </md-card>
+                        </div>
+                        <div class="column" flex>
+                            <iframe width="500" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=escritorio%20contabil%20aquarus%2C%20232.%20Campo%20Grande&key=AIzaSyAFPDiXe9OmM4M2uS-aX8Mxd_3vFkm759k"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </md-card-content>
+
+            </md-card>
+        </md-tab-body>
+    </md-tab>
+    <md-tab id="noticias">
+        <md-tab-label>
+            <md-icon md-font-icon="fa fa-font" class="white"></md-icon>
+            Notícias
+        </md-tab-label>
+        <md-tab-body>
+
+            <md-card class="md-padding" id="noticias">
+                <h2>
+                    <a>Notícias</a>
+                </h2>
+                <md-divider></md-divider>
+
+                <md-card-content class="md-padding">
+                    Em desenvolvimento
+
+
+                </md-card-content>
+
+            </md-card>
+        </md-tab-body>
+    </md-tab>
+
+</md-tabs>
+
+<!--
     <md-button class="toolbar-button" ng-click="vm.goTo('escritorio')">
         <md-icon md-font-icon="fa fa-building" class="white"></md-icon>
 
@@ -27,164 +231,4 @@
         <span>Notícias</span>
     </md-button>
 
-
-
-
-</div>
-<md-card class="md-padding" style="margin-top: 50px;" id="escritorio">
-    <h2>
-        <a>O Escritório</a>
-    </h2>
-    <md-divider></md-divider>
-
-    <md-card-content class="md-padding" style="text-align: justify">
-        <div layout="row">
-            <div layout="column" flex="70">
-                {{vm.textoQuemSomos}}
-            </div>
-            <div layout="column" flex="30">
-                <img src="../assets/contabilidade.png" />
-            </div>
-        </div>
-    </md-card-content>
-
-</md-card>
-
-<md-card class="md-padding" id="premios">
-    <h2>
-        <a>Serviços Contábeis</a>
-    </h2>
-    <md-divider></md-divider>
-
-    <md-card-content class="md-padding">
-
-        <md-card ng-repeat="servico in vm.servicosContabeis" style="float: left; position: relative; max-width: 350px; min-height: 450px !important;">
-            <div class="card-header">
-                <h3>{{servico.categoria}}</h3>
-                <md-divider></md-divider>
-            </div>
-            <md-card-content>
-                <li ng-repeat="serv in servico.servicos">{{serv}}</li>
-            </md-card-content>
-        </md-card>
-
-    </md-card-content>
-
-</md-card>
-<md-card class="md-padding" id="contato">
-    <h2>
-        <a>Fale Conosco</a>
-    </h2>
-    <md-divider></md-divider>
-
-    <md-card-content style="padding-left: 0px !important">
-
-        <div layout="row">
-            <div layout="column" flex="40">
-                <md-card>
-                    <div class="card-header">
-                        <h5>Entre em contato</h5>
-                        <md-divider></md-divider>
-                    </div>
-                    <md-card-content class="content-endereco">
-                        <div layout="column">
-                            <span>Envie-nos um e-mail e entraremos em contato em breve. Teremos o prazer de ajudar.
-                                Você também
-                                pode ligar: (67) 3382-1530 | (67) 3324-2775</span>
-                        </div>
-                    </md-card-content>
-
-                </md-card>
-            </div>
-            <div layout="column" flex="60">
-                <md-card>
-
-                    <md-card-content>
-                        <form class="event-dialog-form" name="eventForm">
-                            <md-input-container class="md-block">
-                                <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
-
-                                <label>Nome</label>
-                                <input ng-model="vm.comunicacao.nome" required>
-                            </md-input-container>
-                            <md-input-container class="md-block">
-                                <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
-
-                                <label>E-mail</label>
-                                <input ng-model="vm.comunicacao.email" required type="email">
-                            </md-input-container>
-                            <md-input-container class="md-block">
-                                <md-icon md-font-icon="zmdi zmdi-phone"></md-icon>
-
-                                <label>Telefone</label>
-                                <input ng-model="vm.comunicacao.telefone" type="tel">
-                            </md-input-container>
-                            <md-input-container class="md-block">
-                                <label>Assunto</label>
-                                <input ng-model="vm.comunicacao.assunto" required>
-                            </md-input-container>
-                            <md-input-container class="md-block">
-                                <label translate>Mensagem</label>
-                                <textarea rows="5" ng-model="vm.comunicacao.mensagem"></textarea>
-                            </md-input-container>
-                            <md-button class="button-primary">Enviar mensagem</md-button>
-                        </form>
-                    </md-card-content>
-                    <md-card>
-            </div>
-
-        </div>
-
-    </md-card-content>
-
-</md-card>
-
-<md-card class="md-padding" id="localizacao">
-    <h2>
-        <a>Localização</a>
-    </h2>
-    <md-divider></md-divider>
-
-
-
-
-    <md-card-content style="padding-left: 0px !important">
-        <div layout="row">
-            <div layout="column" flex="30">
-                <md-card>
-                    <div class="card-header">
-                        <h5>Endereço</h5>
-                        <md-divider></md-divider>
-                    </div>
-                    <md-card-content class="content-endereco">
-                        <div layout="column">
-                            <span>Rua Tonico de Carvalho, 232</span>
-                            <span>Vila Carvalho</span>
-                            <span>Cep: 79097-070</span>
-                            <span>Campo Grande - MS</span>
-                        </div>
-                    </md-card-content>
-
-                </md-card>
-            </div>
-            <div class="column" flex>
-                <iframe width="500" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=escritorio%20contabil%20aquarus%2C%20232.%20Campo%20Grande&key=AIzaSyAFPDiXe9OmM4M2uS-aX8Mxd_3vFkm759k"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-    </md-card-content>
-
-</md-card>
-<md-card class="md-padding" id="noticias">
-    <h2>
-        <a>Notícias</a>
-    </h2>
-    <md-divider></md-divider>
-
-    <md-card-content class="md-padding">
-        Em desenvolvimento
-
-
-    </md-card-content>
-
-</md-card>
+-->
