@@ -1,15 +1,15 @@
-(function() {
+(function () {
   "use strict";
 
   angular.module("app").factory("Textos", Textos);
 
   function Textos() {
     return {
-      adicionarTexto: adicionarTexto
+      adicionarTexto: adicionarTexto,
+      buscarTexto: buscarTexto
     };
 
     function adicionarTexto(id, texto) {
-     alert("TESTE");
       return firebase
         .database()
         .ref("textos/" + id)
@@ -18,16 +18,13 @@
         });
     }
 
-    function buscarUsuario(userId) {
-      if (userId === undefined) {
-        let usuario = Usuario.getUsuario();
-        userId = usuario.uid;
-      }
+    function buscarTexto(textoId) {
+
       return firebase
         .database()
-        .ref("/users/" + userId)
+        .ref("/textos/" + textoId)
         .once("value")
-        .then(function(user) {
+        .then(function (user) {
           return user.val();
         });
     }

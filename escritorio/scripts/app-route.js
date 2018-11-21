@@ -1,6 +1,6 @@
 angular
   .module("app")
-  .config(function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
+  .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider) {
     $mdThemingProvider
       .theme("default")
       .primaryPalette("red")
@@ -35,7 +35,27 @@ angular
           viewContent: {
             controller: "AdminController",
             controllerAs: "vm",
-            templateUrl: "/pages/admin.html"
+            templateUrl: "/pages/admin.html",
+          }
+        }
+      }).state("editar", {
+        url: "/editar",
+        name: "editar",
+        views: {
+          viewContent: {
+            controller: "EditarController",
+            controllerAs: "vm",
+            templateUrl: "/pages/editar.html",
+          }
+        }
+      }).state("editar-noticias", {
+        url: "/editar-noticias",
+        name: "editarNoticias",
+        views: {
+          viewContent: {
+            controller: "EditarNoticiasController",
+            controllerAs: "vm",
+            templateUrl: "/pages/noticias.html",
           }
         }
       });
@@ -46,7 +66,7 @@ angular
 angular.module("app").run(run);
 
 function run($window, $rootScope, Authentication) {
-  const beforeinstallprompt = function(e) {
+  const beforeinstallprompt = function (e) {
     promptEvent = e;
     promptEvent.preventDefault();
     $rootScope.$broadcast("available");
@@ -58,7 +78,7 @@ function run($window, $rootScope, Authentication) {
     return false;
   };
 
-  const installed = function(e) {
+  const installed = function (e) {
     Authentication.setPromptEvent(null);
 
     // This fires after onbeforinstallprompt OR after manual add to homescreen.

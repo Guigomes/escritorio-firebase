@@ -1,135 +1,198 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.5.8/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.5.8/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.5.8/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.5.8/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to Firebase Hosting</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      <!-- Angular Material Library -->
-      <script src="bower_components/angular/angular.min.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-      <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-      <script src="bower_components/angular-aria/angular-aria.min.js"></script>
-      <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-      <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="../bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" />
-      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
-      <link
-        rel="stylesheet"
-        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css"
-      />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/5.5.8/firebase-auth.js"></script>
+  <script defer src="/__/firebase/5.5.8/firebase-database.js"></script>
+  <script defer src="/__/firebase/5.5.8/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/5.5.8/firebase-storage.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
 
-      <link
-      rel="stylesheet"
-      href="styles/triangular.css"
-    />
-    <!-- Aplicação -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/services/authentication.service.js"></script>
-    <script src="scripts/services/texto.service.js"></script>
-    <script src="scripts/controllers/inicio.controller.js"></script>    
-    <script src="scripts/controllers/login.controller.js"></script>    
-    <script src="scripts/controllers/admin.controller.js"></script>    
+  <!-- Angular Material Library -->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="../bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css" />
+  <link rel="stylesheet" href="styles/inline.css" />
+  <link rel="stylesheet" href="styles/triangular.css" />
+  <!-- Aplicação -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/services/authentication.service.js"></script>
+  <script src="scripts/services/texto.service.js"></script>
+  <script src="scripts/services/toast.service.js"></script>
+  <script src="scripts/controllers/inicio.controller.js"></script>
+  <script src="scripts/controllers/login.controller.js"></script>
+  <script src="scripts/controllers/admin.controller.js"></script>
 
-    <script src="scripts/app-route.js"></script>
-    <script src="scripts/ginasios.factory.js"></script>
+  <script src="scripts/app-route.js"></script>
+  <script src="scripts/ginasios.factory.js"></script>
+  <script src="scripts/controllers/editar-noticias.controller.js"></script>
+  <script src="scripts/controllers/editar.controller.js"></script>
+  <script src="scripts/factory/usuario.factory.js"></script>
 
-    <script src="scripts/factory/usuario.factory.js"></script>
+  <style media="screen">
+    body {
+      background: #ECEFF1;
+      color: rgba(0, 0, 0, 0.87);
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
+    #message {
+      background: white;
+      max-width: 360px;
+      margin: 100px auto 16px;
+      padding: 32px 24px;
+      border-radius: 3px;
+    }
+
+    #message h2 {
+      color: #ffa100;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+
+    #message h1 {
+      font-size: 22px;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0 0 16px;
+    }
+
+    #message p {
+      line-height: 140%;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+
+    #message a {
+      display: block;
+      text-align: center;
+      background: #039be5;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    #message,
+    #message a {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    #load {
+      color: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+
+      body,
+      #message {
+        margin-top: 0;
+        background: white;
+        box-shadow: none;
       }
-    </style>
-  </head>
-  <body ng-app="app" ng-cloak style="overflow:scroll">
-    
 
-<div class="md-toolbar-tools toolbar-principal toolbar" style="background-color:azure">
-  <md-button class="md-icon-button" ng-if="!vm.hideMenuButton()" ng-click="vm.openSideNav('left')" aria-label="side navigation">
-      <md-icon md-font-icon="zmdi zmdi-menu"></md-icon>
-  </md-button>
+      body {
+        border-top: 16px solid #ffa100;
+      }
+    }
+  </style>
+</head>
+
+<body ng-app="app" ng-cloak style="overflow:scroll">
 
 
-  <div layout="row" layout-align="space-around center" flex="100">
+  <div class="md-toolbar-tools toolbar-principal toolbar" style="background-color:azure">
+
+    <div layout="row" layout-align="space-around center" flex="100">
 
       <div layout="column">
-          <img src="../assets/header.png" />
+        <img src="../assets/header.png" />
       </div>
       <div layout="row" layout-align="space-around" flex="100">
 
-          <div layout="column" class="divContato" layout-align="center center">
-              <span>
-                  <md-icon md-font-icon="fa fa-phone"></md-icon>(67) 3324-7775</span>
-              <span>
-                  <md-icon md-font-icon="fa fa-phone"></md-icon>(67) 3382-1530</span>
-          </div>
-          <div layout="column" class="divContato" layout-align="center start">
-              <span>
-                  <md-icon md-font-icon="fa fa-whatsapp" style="color: green"></md-icon>(67) 99902-7770</span>
-              <span>
-                  <md-icon md-font-icon="fa fa-envelope-square"></md-icon>aquariusmsi@terra.com.br
-              </span>
-          </div>
+        <div layout="column" class="divContato" layout-align="center center">
+          <span>
+            <md-icon md-font-icon="fa fa-phone"></md-icon>(67) 3324-7775
+          </span>
+          <span>
+            <md-icon md-font-icon="fa fa-phone"></md-icon>(67) 3382-1530
+          </span>
+        </div>
+        <div layout="column" class="divContato" layout-align="center start">
+          <span>
 
-          <div layout="column" class="divContato" layout-align="center start" flex="30">
 
-              <span>Funcionamento</span>
-              <span>Segunda à Sexta</span>
-              <span>08:00h-12:00 / 13:00-17:30h</span>
-          </div>
+            <md-icon md-font-icon="fab fa-whatsapp" style="color: green"></md-icon>(67) 99902-7770
+          </span>
+          <span>
+            <md-icon md-font-icon="fa fa-envelope-square"></md-icon>aquariusmsi@terra.com.br
+          </span>
+        </div>
+
+        <div layout="column" class="divContato" layout-align="center start" flex="30">
+
+          <span>Funcionamento</span>
+          <span>Segunda à Sexta</span>
+          <span>08:00h-12:00 / 13:00-17:30h</span>
+        </div>
 
       </div>
 
+    </div>
+
+
+
+
+
+
   </div>
+  <ui-view name="viewContent"></ui-view>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      /*
+              try {
+                let app = firebase.app();
+                let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+                document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+              } catch (e) {
+                console.error(e);
+                document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+              }*/
+    });
 
+  </script>
+</body>
 
-
-
-
-
-</div>
-      <ui-view name="viewContent"></ui-view>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
 </html>

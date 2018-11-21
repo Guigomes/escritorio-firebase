@@ -1,11 +1,10 @@
 angular.module("app").controller("InicioController", InicioController);
 angular.module("app").controller("DialogController", DialogController);
 
-function InicioController($location, $anchorScroll, DadosService, Textos) {
+function InicioController($location, $anchorScroll, DadosService, Textos, $scope) {
   var vm = this;
-  vm.mostrarInstalar = false;
 
-  vm.textoQuemSomos = DadosService.textoQuemSomos;
+
   vm.servicosContabeis = DadosService.servicosContabeis;
 
   vm.goTo = function (local) {
@@ -16,20 +15,24 @@ function InicioController($location, $anchorScroll, DadosService, Textos) {
     $anchorScroll();
 
     console.log("Textox", Textos);
-    Textos.adicionarTexto(1, "Guilherme Gomes da Silva123").then((res)=>{
-      console.log("Deu certo", res);
-    },(erro)=>{
-console.log("Error", erro);
-    });
-};
+
+  };
+  Textos.buscarTexto(1).then((res) => {
+    vm.textoQuemSomos = res.texto;
+    console.log("Deu certo2", vm.textoQuemSomos);
+
+    $scope.$apply();
+  }, (erro) => {
+    console.log("Erro", erro);
+  });
 
 }
 
-  
+
 
 function DialogController($scope, $mdDialog, $mdToast) {
   var vm = this;
-  $scope.hide = function() {
+  $scope.hide = function () {
     $mdDialog.hide();
   };
 
@@ -47,11 +50,11 @@ function DialogController($scope, $mdDialog, $mdToast) {
       nome: "Instinto"
     }
   ];
-  $scope.cancel = function() {
+  $scope.cancel = function () {
     $mdDialog.cancel();
   };
 
-  vm.answer = function(form) {
+  vm.answer = function (form) {
     if (!form.$valid) {
       $mdToast.show(
         $mdToast

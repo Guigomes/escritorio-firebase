@@ -1,0 +1,15 @@
+<md-card-content class="md-padding" style="text-align: justify">
+    <form name="projectForm" ng-submit="vm.salvar();">
+
+
+        <md-input-container class="md-block">
+            <label>Texto quem somos</label>
+            <textarea ng-model="vm.textoQuemSomos" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+        </md-input-container>
+        <div>
+            <md-button type="submit">Salvar</md-button>
+        </div>
+
+
+    </form>
+</md-card-content>
