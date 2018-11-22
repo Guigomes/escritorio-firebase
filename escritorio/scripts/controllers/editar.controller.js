@@ -18,6 +18,8 @@ function EditarController($scope, Textos, Toast) {
   vm.salvar = salvar;
 
   function salvar() {
+
+
     Textos.adicionarTexto(1, vm.textoQuemSomos).then((response) => {
       Toast.mostrarMensagem("Textos salvos com sucesso");
     }, (err) => {

@@ -1,1 +1,67 @@
-<h1>Noticias</h1>
+<section layout="row" flex class="height100">
+    <!--
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+    -->
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-whiteframe="4">
+        <md-toolbar class="primary-back">
+            <h1 class="md-toolbar-tools">Menu do Administrador</h1>
+        </md-toolbar>
+        <md-content layout-padding ng-controller="AdminController">
+            <md-list class="md-dense" flex>
+                <md-list-item ng-click="vm.acionarMenu('editar')">
+                    <md-icon md-font-set="fas fa-edit fa-2x"></md-icon>
+                    <p class="primary">Editar Textos</p>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item ng-click="vm.acionarMenu('editar-noticias')">
+
+                    <md-icon md-font-set="fas fa-newspaper fa-2x"></md-icon>
+                    <p class="primary">Gerenciar Notícias</p>
+                </md-list-item>
+                <md-list-item ng-click="vm.acionarMenu('/')">
+                    <md-icon md-font-set="fas fa-sign-out-alt fa-2x"></md-icon>
+                    <p class="primary">Sair</p>
+                </md-list-item>
+            </md-list>
+        </md-content>
+
+    </md-sidenav>
+
+    <md-content flex layout-padding class="height100">
+        <md-card>
+            <md-card-content class="md-padding" style="text-align: justify">
+                <form ng-submit="vm.salvarNoticia();">
+                    <h1>Nova Noticia</h1>
+
+                    <div layout="row">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Titulo da Noticia</label>
+                            <input ng-model="vm.noticia.titulo">
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container>
+                            <label>Data de Inicio</label>
+                            <md-datepicker ng-model="vm.noticia.dataInicio"></md-datepicker>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label>Data de Fim</label>
+                            <md-datepicker ng-model="vm.noticia.dataFim"></md-datepicker>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container class="md-block">
+                            <label>Notícia</label>
+                            <textarea ng-model="vm.noticia.textoNoticia" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+                        </md-input-container>
+
+
+                    </div>
+
+                    <md-button class="primary" type="submit">Salvar</md-button>
+                </form>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</section>
