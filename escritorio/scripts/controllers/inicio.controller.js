@@ -1,7 +1,7 @@
 angular.module("app").controller("InicioController", InicioController);
 angular.module("app").controller("DialogController", DialogController);
 
-function InicioController($location, $anchorScroll, DadosService, Textos, $scope) {
+function InicioController($location, $anchorScroll, DadosService, Textos, $scope, Noticia) {
   var vm = this;
 
 
@@ -17,13 +17,55 @@ function InicioController($location, $anchorScroll, DadosService, Textos, $scope
     console.log("Textox", Textos);
 
   };
+
   Textos.buscarTexto(1).then((res) => {
     vm.textoQuemSomos = res.texto;
-    console.log("Deu certo2", vm.textoQuemSomos);
-
     $scope.$apply();
   }, (erro) => {
-    console.log("Erro", erro);
+    tratarErro(erro);
+  });
+
+
+  Textos.buscarTexto(2).then((res) => {
+    vm.textoMissao = res.texto;
+    $scope.$apply();
+  }, (erro) => {
+    tratarErro(erro);
+  });
+
+
+  Textos.buscarTexto(3).then((res) => {
+    vm.textoVisao = res.texto;
+    $scope.$apply();
+  }, (erro) => {
+    tratarErro(erro);
+  });
+
+
+  Textos.buscarTexto(4).then((res) => {
+    vm.textoValores = res.texto.split('|');
+    $scope.$apply();
+  }, (erro) => {
+    tratarErro(erro);
+  });
+
+  function tratarErro(err) {
+    console.log("erro", err);
+  }
+  Noticia.listarNoticias().then((noticias) => {
+
+    vm.noticias = [];
+
+    for (var i in noticias) {
+      noticias[i].noticia.dataInicio = new Date(noticias[i].noticia.dataInicio);
+      noticias[i].noticia.dataFim = new Date(noticias[i].noticia.dataFim);
+      vm.noticias.push(noticias[i].noticia);
+    }
+    $scope.$apply();
+
+
+
+
   });
 
 }

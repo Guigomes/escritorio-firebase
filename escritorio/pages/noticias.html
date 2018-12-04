@@ -28,40 +28,23 @@
     </md-sidenav>
 
     <md-content flex layout-padding class="height100">
-        <md-card>
+        <md-button class="md-primary md-raised" ng-click="vm.abrirNovaNoticia($event)">Nova noticia</md-button>
+
+        <md-card ng-repeat="noticia in vm.noticias">
+            <md-card-header>
+                <md-card-header-text>
+                    <span class="md-title">{{noticia.titulo}}</span>
+                    <span class="md-subhead">de {{noticia.dataInicio | date}} até {{noticia.dataFim | date}}</span>
+                </md-card-header-text>
+                <md-button class="md-primary">Editar</md-button>
+                <md-button class="primary">Excluir</md-button>
+            </md-card-header>
+
+            <md-divider></md-divider>
             <md-card-content class="md-padding" style="text-align: justify">
-                <form ng-submit="vm.salvarNoticia();">
-                    <h1>Nova Noticia</h1>
-
-                    <div layout="row">
-                        <md-input-container class="md-block" flex-gt-xs>
-                            <label>Titulo da Noticia</label>
-                            <input ng-model="vm.noticia.titulo">
-                        </md-input-container>
-                    </div>
-                    <div layout="row">
-                        <md-input-container>
-                            <label>Data de Inicio</label>
-                            <md-datepicker ng-model="vm.noticia.dataInicio"></md-datepicker>
-                        </md-input-container>
-
-                        <md-input-container>
-                            <label>Data de Fim</label>
-                            <md-datepicker ng-model="vm.noticia.dataFim"></md-datepicker>
-                        </md-input-container>
-                    </div>
-                    <div layout="row">
-                        <md-input-container class="md-block">
-                            <label>Notícia</label>
-                            <textarea ng-model="vm.noticia.textoNoticia" md-maxlength="1000" rows="5" md-select-on-load></textarea>
-                        </md-input-container>
-
-
-                    </div>
-
-                    <md-button class="primary" type="submit">Salvar</md-button>
-                </form>
+                {{noticia.textoNoticia}}
             </md-card-content>
         </md-card>
+
     </md-content>
 </section>
