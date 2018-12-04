@@ -5,8 +5,15 @@ function InicioController($location, $anchorScroll, DadosService, Textos, $scope
   var vm = this;
 
 
-  vm.servicosContabeis = DadosService.servicosContabeis;
 
+
+
+  Textos.listarServicosPrestados().then((res) => {
+    vm.servicosContabeis = res.servicos;
+    console.log("res", res);
+  }, (erro) => {
+    tratarErro(erro);
+  });
   vm.goTo = function (local) {
 
     $location.hash(local);
