@@ -1,11 +1,28 @@
 <md-card-content class="md-padding" style="text-align: justify">
     <form name="projectForm" ng-submit="vm.salvar();">
 
-
+<!--
         <md-input-container class="md-block">
             <label>Texto quem somos</label>
             <textarea ng-model="vm.textoQuemSomos" md-maxlength="1000" rows="5" md-select-on-load></textarea>
         </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Missão</label>
+            <textarea ng-model="vm.textoMissao" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+        </md-input-container>
+
+
+        <md-input-container class="md-block">
+            <label>Visão</label>
+            <textarea ng-model="vm.textoVisao" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+        </md-input-container>
+-->
+        <label>Valores</label>
+        <md-input-container class="md-block" ng-repeat="valor in vm.valores track by $index">           
+            <input type="text" placeholder="Adiocione um novo valor" ng-model="valor.texto" ng-click="vm.adicionarValor($index);"/>
+        </md-input-container>
+
         <div>
             <md-button type="submit">Salvar</md-button>
         </div>
