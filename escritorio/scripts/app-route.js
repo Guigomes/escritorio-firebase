@@ -3,7 +3,7 @@ angular
   .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider) {
     $mdThemingProvider
       .theme("default")
-      .primaryPalette("red")
+      .primaryPalette("blue")
       .accentPalette("blue");
 
     $stateProvider
