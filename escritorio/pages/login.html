@@ -7,22 +7,22 @@
     <md-card-content class="md-padding" style="text-align: justify">
         <form name="projectForm" ng-submit="vm.entrar();">
 
-        <md-input-container>
-            <label>Usuário</label>
-            <input type="text" ng-model="vm.usuario" required>
-          </md-input-container>
-    
-          <md-input-container>
-            <label>Senha</label>
-            <input ng-model="vm.senha" type="password" required>
-          </md-input-container>
+            <md-input-container>
+                <label>Usuário</label>
+                <input type="text" ng-model="vm.usuario" required>
+            </md-input-container>
 
-          <div>
-            <md-button type="submit">Entrar</md-button>
-          </div>
-    
-     
-          </form>
+            <md-input-container>
+                <label>Senha</label>
+                <input ng-model="vm.senha" type="password" required>
+            </md-input-container>
+
+            <div>
+                <md-button type="submit" class="md-primary md-raised">Entrar</md-button>
+            </div>
+
+
+        </form>
     </md-card-content>
 
 </md-card>

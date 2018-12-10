@@ -1,12 +1,43 @@
 angular.module("app").controller("InicioController", InicioController);
 angular.module("app").controller("DialogController", DialogController);
 
-function InicioController($location, $anchorScroll, DadosService, Textos, $scope, Noticia) {
+function InicioController($location, $anchorScroll, $interval, Textos, $scope, Noticia) {
   var vm = this;
 
 
 
 
+
+  Noticia.listarNoticias().then((noticias) => {
+
+    vm.noticias = [];
+
+    for (var i in noticias) {
+      noticias[i].noticia.dataInicio = new Date(noticias[i].noticia.dataInicio);
+      noticias[i].noticia.dataFim = new Date(noticias[i].noticia.dataFim);
+      vm.noticias.push(noticias[i].noticia);
+    }
+
+    if (vm.noticias.length > 0) {
+      var indexNoticia = 0;
+      vm.noticiaAtual = vm.noticias[0];
+
+      $interval(function () {
+        if (vm.noticias.length - 1 === indexNoticia) {
+          indexNoticia = 0;
+        } else {
+          indexNoticia++;
+        }
+        vm.noticiaAtual = vm.noticias[indexNoticia];
+      }, 3000);
+    }
+    $scope.$apply();
+
+    console.log("vm.noticiad", vm.noticias);
+
+
+
+  });
 
   Textos.listarServicosPrestados().then((res) => {
     vm.servicosContabeis = res.servicos;
@@ -79,11 +110,34 @@ function InicioController($location, $anchorScroll, DadosService, Textos, $scope
 
 
 
-function DialogController($scope, $mdDialog, $mdToast) {
+function DialogController($scope, $mdDialog, Toast, Noticia) {
   var vm = this;
   $scope.hide = function () {
     $mdDialog.hide();
   };
+  vm.noticia = {};
+  vm.noticia.dataInicio = new Date();
+  vm.minDate = new Date();
+  vm.salvarNoticia = salvarNoticia;
+
+  function salvarNoticia() {
+
+
+    vm.noticia.dataInicio = vm.noticia.dataInicio.toString();
+    vm.noticia.dataFim = vm.noticia.dataFim.toString();
+    Noticia.salvarNoticia(vm.noticia).then((response) => {
+      Toast.mostrarMensagem("Notícia salva com sucesso");
+      $mdDialog.cancel();
+
+
+    }, (err) => {
+      $mdDialog.cancel();
+
+      Toast.mostrarErro("Erro ao salvar notícia. " + err);
+    });
+
+
+  }
 
   vm.times = [
     {

@@ -1,3 +1,17 @@
+<md-card>
+    <md-card-title-text>
+        <span class="titulo-noticias-atual"> {{vm.noticiaAtual.titulo}}</span>
+
+    </md-card-title-text>
+    <md-divider></md-divider>
+
+
+
+    <md-card-content class="md-padding" style="text-align: justify">
+        {{vm.noticiaAtual.textoNoticia}}
+    </md-card-content>
+</md-card>
+
 <md-tabs class="md-accent height100" md-selected="0" md-align-tabs="top">
     <md-tab id="escritorio">
         <md-tab-label class="primary-back">
@@ -5,7 +19,7 @@
         </md-tab-label>
         <md-tab-body>
 
-            <md-card class="md-padding" style="margin-top: 50px;" id="escritorio">
+            <md-card class="md-padding" style="margin-top: 15px;" id="escritorio">
                 <h2>
                     <a>O Escritório</a>
                 </h2>

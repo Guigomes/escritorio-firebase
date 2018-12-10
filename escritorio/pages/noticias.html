@@ -30,14 +30,15 @@
     <md-content flex layout-padding class="height100">
         <md-button class="md-primary md-raised" ng-click="vm.abrirNovaNoticia($event)">Nova noticia</md-button>
 
-        <md-card ng-repeat="noticia in vm.noticias">
+        <md-card ng-repeat="noticia in vm.noticias | reverse">
             <md-card-header>
                 <md-card-header-text>
                     <span class="md-title">{{noticia.titulo}}</span>
-                    <span class="md-subhead">de {{noticia.dataInicio | date}} até {{noticia.dataFim | date}}</span>
+                    <span class="md-subhead">de {{noticia.dataInicio | date : "dd/MM/yyyy"}} até {{noticia.dataFim |
+                        date : "dd/MM/yyyy"}}</span>
                 </md-card-header-text>
-                <md-button class="md-primary">Editar</md-button>
-                <md-button class="primary">Excluir</md-button>
+                <md-button class="md-primary md-raised">Editar</md-button>
+                <md-button class="md-accent md-raised">Excluir</md-button>
             </md-card-header>
 
             <md-divider></md-divider>

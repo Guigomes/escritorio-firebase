@@ -1,11 +1,27 @@
 angular
   .module("app")
-  .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider) {
+  .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider, $mdDateLocaleProvider) {
     $mdThemingProvider
       .theme("default")
-      .primaryPalette("red")
-      .accentPalette("blue");
+      .primaryPalette("blue")
+      .accentPalette("red");
 
+    // Example of a French localization.
+    $mdDateLocaleProvider.months = ['janeiro', 'fevereiro', 'março', "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+    $mdDateLocaleProvider.shortMonths = ['jan', 'fev', 'mar', "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+    $mdDateLocaleProvider.days = ["domingo", 'segunda', 'terça', 'quarta', "quinta", "sexta", "sábado"];
+    $mdDateLocaleProvider.shortDays = ['D', 'S', 'T', "Q", "Q", "S", "S"];
+    $mdDateLocaleProvider.firstDayOfWeek = 0;
+
+    $mdDateLocaleProvider.parseDate = function (dateString) {
+      var m = moment(dateString, 'DD/MM/YYYY', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+
+    $mdDateLocaleProvider.formatDate = function (date) {
+      var m = moment(date);
+      return m.isValid() ? m.format('DD/MM/YYYY') : '';
+    };
     $stateProvider
       .state("/", {
         url: "/",
@@ -63,28 +79,9 @@ angular
     $urlRouterProvider.otherwise("/");
   });
 
-angular.module("app").run(run);
-
-function run($window, $rootScope, Authentication) {
-  const beforeinstallprompt = function (e) {
-    promptEvent = e;
-    promptEvent.preventDefault();
-    $rootScope.$broadcast("available");
-
-    console.log("before4");
-    Authentication.setPromptEvent(promptEvent);
-    ga("send", "event", "install", "available");
-
-    return false;
+angular.module("app").filter('reverse', function () {
+  return function (items) {
+    return items.slice().reverse();
   };
+});
 
-  const installed = function (e) {
-    Authentication.setPromptEvent(null);
-
-    // This fires after onbeforinstallprompt OR after manual add to homescreen.
-    ga("send", "event", "install", "installed");
-  };
-
-  $window.addEventListener("beforeinstallprompt", beforeinstallprompt);
-  $window.addEventListener("appinstalled", installed);
-}

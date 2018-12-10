@@ -14,9 +14,35 @@
  * limitations under the License.
  */
 
+ .md-dialog {
+  width: 750px !important;
+  max-height: 100% !important;
+}
+
+.aviso-data-fim{
+  text-align: center;
+  color:red;
+  font-size: 9px !important;
+  padding-left: 50px;
+  max-width: 200px;
+}
+
+.md-dialog-content {
+  width: 750px  !important;
+}
  .primary{
    color: #00BCD4 !important;
    
+ }
+ .titulo-noticias-atual{
+   font-weight: bold;
+   font-size: 14px;
+   padding-left: 5px;
+ }
+ .titulo-noticias{
+   margin: 0px;
+   padding-left: 5px;
+   font-size: 12px;
  }
 
  md-tabs.md-default-theme.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]), md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]), md-tabs.md-default-theme.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) md-icon, md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) md-icon {

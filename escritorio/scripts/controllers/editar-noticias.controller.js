@@ -6,7 +6,6 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
 
   vm.textoQuemSomos = DadosService.textoQuemSomos;
   vm.servicosContabeis = DadosService.servicosContabeis;
-  vm.salvarNoticia = salvarNoticia;
   vm.abrirNovaNoticia = abrirNovaNoticia;
 
 
@@ -31,11 +30,11 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
   function abrirNovaNoticia(ev) {
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: 'pages/nova-noticia-dialog.html',
+      controllerAs: "vm",
+      templateUrl: 'pages/principal.html',
 
       targetEvent: ev,
-      clickOutsideToClose: true,
-      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+      clickOutsideToClose: true
     })
       .then(function (answer) {
         $scope.status = 'You said the information was "' + answer + '".';
@@ -43,18 +42,6 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
         $scope.status = 'You cancelled the dialog.';
       });
   }
-  function salvarNoticia() {
 
-    vm.noticia.dataInicio = vm.noticia.dataInicio.toString();
-    vm.noticia.dataFim = vm.noticia.dataFim.toString();
-    console.log("Noticia", vm.noticia);
-    Noticia.salvarNoticia(vm.noticia).then((response) => {
-      Toast.mostrarMensagem("Notícia salva com sucesso");
-    }, (err) => {
-      Toast.mostrarErro("Erro ao salvar notícia. " + err);
-    });
-
-
-  }
 }
 
