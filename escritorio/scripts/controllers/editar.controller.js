@@ -4,16 +4,30 @@ function EditarController($scope, Textos, Toast) {
   var vm = this;
 
   vm.adicionarValor = adicionarValor;
+vm.adicionarNovoServico =adicionarNovoServico;
+vm.adicionarNovaCategoria = adicionarNovaCategoria;
 
- 
 
-  function adicionarValor(index){
-   
-    if(index === vm.valores.length -1){
-      vm.valores.push({
-        texto: ""
-      });  }
-  }
+ init();
+
+function init(){
+
+
+  Textos.listarServicosPrestados().then((res) => {
+
+    let servicos = res.servicos;
+
+    console.log("servicos", servicos);
+    
+    for(var i in servicos){
+     
+        servicos[i].servicos.push("");
+    }
+    vm.servicosPrestados = servicos;
+
+  }, (erro) => {
+    tratarErro(erro);
+  });
 
   Textos.buscarTexto(1).then((res) => {
     vm.textoQuemSomos = res.texto;
@@ -23,7 +37,32 @@ function EditarController($scope, Textos, Toast) {
     console.log("Erro", erro);
   });
 
+}
 
+function adicionarValor(index){
+   
+  if(index === vm.valores.length -1){
+    vm.valores.push({
+      texto: ""
+    });  }
+}
+
+
+function adicionarNovaCategoria(){
+  vm.servicosPrestados.push({});
+}
+
+
+  function adicionarNovoServico(index1, index2){
+ 
+
+if(index2 == vm.servicosPrestados[index1].servicos.length -1){
+  vm.servicosPrestados[index1].servicos.push("");
+}
+    
+
+    
+  }
 
   Textos.buscarTexto(4).then((res) => {
     let valores = res.texto.split('|');

@@ -18,15 +18,44 @@
             <textarea ng-model="vm.textoVisao" md-maxlength="1000" rows="5" md-select-on-load></textarea>
         </md-input-container>
 -->
+<!--
         <label>Valores</label>
         <md-input-container class="md-block" ng-repeat="valor in vm.valores track by $index">           
             <input type="text" placeholder="Adiocione um novo valor" ng-model="valor.texto" ng-click="vm.adicionarValor($index);"/>
         </md-input-container>
+-->
+        
+        <md-card class="md-padding" id="premios">
+            <h2>
+                <a>Serviços Contábeis</a>
+                <md-button class="md-primary md-raised" ng-click="vm.adicionarNovaCategoria();">Adicionar nova categoria</md-button>
+            </h2>
+            <md-divider></md-divider>
 
+            <md-card-content class="md-padding">
+
+                <md-card ng-repeat="(i, servico) in vm.servicosPrestados track by $index" style="float: left; position: relative; max-width: 350px; min-height: 450px !important;">
+                    <div class="card-header">
+                            <md-input-container>
+                                    
+                                    <input ng-model="servico.categoria" placeholder="informe o nome da categoria">
+                                  </md-input-container>
+                        
+                        <md-divider></md-divider>
+                    </div>
+                    <md-card-content>
+                            <md-input-container ng-repeat="serv in servico.servicos track by $index">
+                                    <input  ng-model="serv" type="text" placeholder="adicione o novo serviço" ng-click="vm.adicionarNovoServico(i, $index)"/>
+
+                                  </md-input-container>
+                    </md-card-content>
+                </md-card>
+
+            </md-card-content>
+
+        </md-card>
         <div>
             <md-button type="submit">Salvar</md-button>
         </div>
-
-
     </form>
 </md-card-content>
