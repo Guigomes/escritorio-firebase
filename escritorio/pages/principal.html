@@ -1,8 +1,8 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog aria-label="{{vm.title}}">
   <form ng-cloak ng-submit="vm.salvarNoticia();">
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Nova Noticia</h2>
+        <h2>{{vm.title}}</h2>
         <span flex></span>
         <!--
         <md-button class="md-icon-button" ng-click="cancel()">

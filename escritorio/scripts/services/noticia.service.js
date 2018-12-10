@@ -9,7 +9,7 @@
       listarNoticias: listarNoticias
     };
 
-    function salvarNoticia(noticia) {
+    function salvarNoticia(noticia, id) {
       /*
       var database = firebase.database();
       
@@ -18,12 +18,23 @@
       let newRef = ref.push();
 
       */
-      return firebase
-        .database()
-        .ref("noticia").push()
-        .set({
-          noticia: noticia
-        });
+      console.log("id", id);
+      if (id !== undefined) {
+        return firebase
+          .database()
+          .ref("noticia/" + id).push()
+          .set({
+            noticia: noticia
+          });
+      } else {
+        return firebase
+          .database()
+          .ref("noticia").push()
+          .set({
+            noticia: noticia
+          });
+      }
+
     }
 
     function listarNoticias() {

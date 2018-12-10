@@ -19,8 +19,13 @@ angular
     };
 
     $mdDateLocaleProvider.formatDate = function (date) {
-      var m = moment(date);
-      return m.isValid() ? m.format('DD/MM/YYYY') : '';
+      if (date !== undefined) {
+
+        var m = moment(date);
+        return m.isValid() ? m.format('DD/MM/YYYY') : '';
+      } else {
+        return "";
+      }
     };
     $stateProvider
       .state("/", {
@@ -81,7 +86,9 @@ angular
 
 angular.module("app").filter('reverse', function () {
   return function (items) {
-    return items.slice().reverse();
+    if (items !== undefined) {
+      return items.slice().reverse();
+    }
   };
 });
 

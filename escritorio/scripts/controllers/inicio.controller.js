@@ -1,5 +1,4 @@
 angular.module("app").controller("InicioController", InicioController);
-angular.module("app").controller("DialogController", DialogController);
 
 function InicioController($location, $anchorScroll, $interval, Textos, $scope, Noticia) {
   var vm = this;
@@ -109,80 +108,3 @@ function InicioController($location, $anchorScroll, $interval, Textos, $scope, N
 }
 
 
-
-function DialogController($scope, $mdDialog, Toast, Noticia) {
-  var vm = this;
-  $scope.hide = function () {
-    $mdDialog.hide();
-  };
-  vm.noticia = {};
-  vm.noticia.dataInicio = new Date();
-  vm.minDate = new Date();
-  vm.salvarNoticia = salvarNoticia;
-
-  function salvarNoticia() {
-
-
-    vm.noticia.dataInicio = vm.noticia.dataInicio.toString();
-    vm.noticia.dataFim = vm.noticia.dataFim.toString();
-    Noticia.salvarNoticia(vm.noticia).then((response) => {
-      Toast.mostrarMensagem("Notícia salva com sucesso");
-      $mdDialog.cancel();
-
-
-    }, (err) => {
-      $mdDialog.cancel();
-
-      Toast.mostrarErro("Erro ao salvar notícia. " + err);
-    });
-
-
-  }
-
-  vm.times = [
-    {
-      codigo: 1,
-      nome: "Valor"
-    },
-    {
-      codigo: 2,
-      nome: "Mistic"
-    },
-    {
-      codigo: 3,
-      nome: "Instinto"
-    }
-  ];
-  $scope.cancel = function () {
-    $mdDialog.cancel();
-  };
-
-  vm.answer = function (form) {
-    if (!form.$valid) {
-      $mdToast.show(
-        $mdToast
-          .simple()
-          .textContent("Por favor, informe todos os campo.")
-          .position("bottom")
-          .hideDelay(3000)
-      );
-    } else {
-      if (vm.nivel > 0 && vm.nivel <= 40) {
-        let novoUsuario = {
-          apelido: vm.apelido,
-          nivel: vm.nivel,
-          time: vm.time
-        };
-        $mdDialog.hide(novoUsuario);
-      } else {
-        $mdToast.show(
-          $mdToast
-            .simple()
-            .textContent("Por favor, informe um nivel entre 1 e 40.")
-            .position("bottom")
-            .hideDelay(3000)
-        );
-      }
-    }
-  };
-}
