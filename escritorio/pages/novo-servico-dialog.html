@@ -1,0 +1,37 @@
+<md-dialog aria-label="{{vm.title}}" class="dialog-servico">
+    <md-dialog-content style="text-align: justify">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <p>{{vm.title}}</p>
+                <span flex></span>
+                <!--
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                    </md-button>
+                    -->
+            </div>
+        </md-toolbar>
+
+        <form ng-submit="vm.salvarCategoria();">
+
+            <md-input-container class="md-block">
+                <label>Titulo da Categoria</label>
+                <input ng-model=" vm.servico.categoria  ">
+
+            </md-input-container>
+            <md-divider></md-divider>
+
+            <div layout="row">
+                <p>Serviços</p>
+            </div>
+            <div layout="row" ng-repeat="servico in vm.servico.servicos track by $index">
+                <md-input-container style="margin-bottom: 1px; margin-top: 1px;">
+
+                    <textarea type="text" ng-model="servico.nome" placeholder="adicione um novo serviço" ng-focus="vm.adicionarNovoServico($index);"></textarea>
+                </md-input-container>
+            </div>
+
+            <md-button class="md-primary md-raised" type="submit">Salvar</md-button>
+        </form>
+    </md-dialog-content>
+</md-dialog>

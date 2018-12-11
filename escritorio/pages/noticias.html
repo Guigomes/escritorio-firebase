@@ -1,4 +1,4 @@
-<section layout="row" flex class="height100">
+<section layout="row" flex class="height100" md-theme="default">
     <!--
     <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
     -->
@@ -8,11 +8,16 @@
         </md-toolbar>
         <md-content layout-padding ng-controller="AdminController">
             <md-list class="md-dense" flex>
+                <md-list-item ng-click="vm.acionarMenu('home')">
+                    <md-icon md-font-set="fas fa-home fa-2x"></md-icon>
+                    <p class="primary">Pagina Inicial</p>
+                </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item ng-click="vm.acionarMenu('editar')">
                     <md-icon md-font-set="fas fa-edit fa-2x"></md-icon>
                     <p class="primary">Editar Textos</p>
                 </md-list-item>
-                <md-divider></md-divider>
                 <md-list-item ng-click="vm.acionarMenu('editar-noticias')">
 
                     <md-icon md-font-set="fas fa-newspaper fa-2x"></md-icon>
@@ -42,7 +47,7 @@
                         "dd/MM/yyyy"}} </span>
                 </md-card-header-text>
                 <md-button class="md-primary md-raised" ng-click="vm.editarNoticia($event, noticia)">Editar</md-button>
-                <md-button class="md-accent md-raised">Excluir</md-button>
+                <md-button class="md-accent md-raised" ng-click="vm.excluirNoticia($event,noticia);">Excluir</md-button>
             </md-card-header>
 
             <md-divider></md-divider>

@@ -6,34 +6,29 @@
   function Noticia() {
     return {
       salvarNoticia: salvarNoticia,
+      atualizarNoticia: atualizarNoticia,
       listarNoticias: listarNoticias
     };
+    function atualizarNoticia(noticia, id) {
+      alert("PASSEI AQUI2");
+      var updates = {};
+      updates['/noticia/' + id] = {
+        noticia: noticia
+      };
 
-    function salvarNoticia(noticia, id) {
-      /*
-      var database = firebase.database();
-      
-      var ref = database.Reference;
+      return firebase.database().ref().update(updates);
 
-      let newRef = ref.push();
+    }
+    function salvarNoticia(noticia) {
 
-      */
-      console.log("id", id);
-      if (id !== undefined) {
-        return firebase
-          .database()
-          .ref("noticia/" + id).push()
-          .set({
-            noticia: noticia
-          });
-      } else {
-        return firebase
-          .database()
-          .ref("noticia").push()
-          .set({
-            noticia: noticia
-          });
-      }
+
+      return firebase
+        .database()
+        .ref("noticia").push()
+        .set({
+          noticia: noticia
+        });
+
 
     }
 

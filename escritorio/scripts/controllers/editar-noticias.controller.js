@@ -6,6 +6,7 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
   vm.servicosContabeis = DadosService.servicosContabeis;
   vm.abrirNovaNoticia = abrirNovaNoticia;
   vm.editarNoticia = editarNoticia;
+  vm.excluirNoticia = excluirNoticia;
   listarNoticias();
 
   function listarNoticias() {
@@ -23,6 +24,32 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
       }
       $scope.$apply();
     });
+  }
+
+  function excluirNoticia(ev, noticia) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+      .title('Exclusão de notícia')
+      .textContent('Tem certeza que deseja excluir a notícia?')
+      .targetEvent(ev)
+      .ok('Sim')
+      .cancel('Não');
+
+    $mdDialog.show(confirm).then(function () {
+      Noticia.atualizarNoticia(null, noticia.id).then((response) => {
+        Toast.mostrarMensagem("Notícia excluída com sucesso");
+
+        listarNoticias();
+      }, (err) => {
+
+        Toast.mostrarErro("Erro ao excluir notícia. " + err);
+      });
+      console.log("noticia a ser excluida", noticia);
+
+    }, function () {
+      $scope.status = 'You decided to keep your debt.';
+    });
+
   }
   function abrirNovaNoticia(ev) {
     $mdDialog.show({

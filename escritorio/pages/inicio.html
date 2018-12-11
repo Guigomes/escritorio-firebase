@@ -1,14 +1,12 @@
-<md-card>
-    <md-card-title-text>
-        <span class="titulo-noticias-atual"> {{vm.noticiaAtual.titulo}}</span>
-
+<md-card class="card-aviso-simples">
+    <md-card-title-text class="animated bounce" style="padding-left: 15px; padding-top: 2px;">
+        <b>Simples</b>
     </md-card-title-text>
     <md-divider></md-divider>
+    <md-card-content class="card-content-aviso-simples" style="text-align: justify">
+        <span> Faça parte do simples.</span> <a href="http://www.rhnetsocial.com.br/aquariuscg">Clique aqui para fazer
+            seu cadastro</a></span>
 
-
-
-    <md-card-content class="md-padding" style="text-align: justify">
-        {{vm.noticiaAtual.textoNoticia}}
     </md-card-content>
 </md-card>
 
@@ -96,7 +94,7 @@
                             <md-divider></md-divider>
                         </div>
                         <md-card-content>
-                            <li ng-repeat="serv in servico.servicos">{{serv}}</li>
+                            <li ng-repeat="serv in servico.servicos">{{serv.nome}}</li>
                         </md-card-content>
                     </md-card>
 
@@ -247,8 +245,7 @@
                         <md-card-header>
                             <md-card-header-text>
                                 <span class="md-title">{{noticia.titulo}}</span>
-                                <span class="md-subhead">de {{noticia.dataInicio | date}} até {{noticia.dataFim
-                                    | date}}</span>
+
                             </md-card-header-text>
 
                         </md-card-header>

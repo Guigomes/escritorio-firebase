@@ -6,6 +6,7 @@ angular
       .primaryPalette("blue")
       .accentPalette("red");
 
+
     // Example of a French localization.
     $mdDateLocaleProvider.months = ['janeiro', 'fevereiro', 'março', "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
     $mdDateLocaleProvider.shortMonths = ['jan', 'fev', 'mar', "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
@@ -17,6 +18,7 @@ angular
       var m = moment(dateString, 'DD/MM/YYYY', true);
       return m.isValid() ? m.toDate() : new Date(NaN);
     };
+
 
     $mdDateLocaleProvider.formatDate = function (date) {
       if (date !== undefined) {
