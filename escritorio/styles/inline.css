@@ -13,8 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+.input-container-margin-menor{
+  margin-top: 8px !important; 
+  margin-bottom: 8px !important; 
+}
+ .no-padding-vertical{
+   padding-top: 0px !important; 
+   padding-bottom: 0px !important; 
+ }
 .dialog-servico{
   min-width: 750px !important;
+}
+
+.card-menor{
+  font-size: 18px;
+  position: relative;
+  float: left;
+  width: 500px;
 }
 
 .dialog-servico md-input-container{

@@ -1,69 +1,132 @@
-<md-card-content class="md-padding" style="text-align: justify">
-    <form name="projectForm" ng-submit="vm.salvar();">
+<section layout="row" flex class="height100" md-theme="default">
 
-        <!--
-        <md-input-container class="md-block">
-            <label>Texto quem somos</label>
-            <textarea ng-model="vm.textoQuemSomos" md-maxlength="1000" rows="5" md-select-on-load></textarea>
-        </md-input-container>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-whiteframe="4">
+        <md-toolbar class="primary-back">
+            <h1 class="md-toolbar-tools">Menu do Administrador</h1>
+        </md-toolbar>
+        <md-content layout-padding ng-controller="AdminController">
+            <md-list class="md-dense" flex>
+                <md-list-item ng-click="vm.acionarMenu('logado')">
+                    <md-icon md-font-set="fas fa-home fa-2x"></md-icon>
+                    <p class="primary">Pagina Inicial</p>
+                </md-list-item>
+                <md-divider></md-divider>
 
-        <md-input-container class="md-block">
-            <label>Missão</label>
-            <textarea ng-model="vm.textoMissao" md-maxlength="1000" rows="5" md-select-on-load></textarea>
-        </md-input-container>
+                <md-list-item ng-click="vm.acionarMenu('editar')">
+                    <md-icon md-font-set="fas fa-edit fa-2x"></md-icon>
+                    <p class="primary">Editar Textos</p>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <md-list-item ng-click="vm.acionarMenu('editar-noticias')">
+
+                    <md-icon md-font-set="fas fa-newspaper fa-2x"></md-icon>
+                    <p class="primary">Gerenciar Notícias</p>
+                </md-list-item>
+                <md-divider></md-divider>
+
+                <md-list-item ng-click="vm.acionarMenu('/')">
+                    <md-icon md-font-set="fas fa-sign-out-alt fa-2x"></md-icon>
+                    <p class="primary">Sair</p>
+                </md-list-item>
+            </md-list>
+        </md-content>
+
+    </md-sidenav>
+    <md-content flex layout-padding class="height100">
+
+        <md-card>
+            <md-card-content class="md-padding" style="text-align: justify">
+                <div layout="row">
+                    <div layout="column" flex="80">
+                        <h2><a>Editar Textos</a></h2>
+                    </div>
+                    <div layout="column" flex="20">
+                        <md-button class="md-primary md-raised" type="submit" ng-click="vm.salvar();">Salvar Textos</md-button>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+                <form name="projectForm" ng-submit="vm.salvar();">
+
+                    <h4><a>Texto quem somos</a></h4>
+
+                    <md-input-container class="md-block">
+                        <label>Altere o texto Quem Somos</label>
+
+                        <textarea ng-model="vm.textoQuemSomos" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+                    </md-input-container>
+                    <md-divider></md-divider>
+                    <h4><a>Missão</a></h4>
+
+                    <md-input-container class="md-block">
+                        <label>Altere o texto Missão</label>
+                        <textarea ng-model="vm.textoMissao" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+                    </md-input-container>
+
+                    <md-divider></md-divider>
+                    <h4><a>Visão</a></h4>
+
+                    <md-input-container class="md-block">
+                        <label><label>Altere o texto Visão</label></label>
+                        <textarea ng-model="vm.textoVisao" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+                    </md-input-container>
+                    <md-divider></md-divider>
+                    <h4><a>Valores</a></h4>
 
 
-        <md-input-container class="md-block">
-            <label>Visão</label>
-            <textarea ng-model="vm.textoVisao" md-maxlength="1000" rows="5" md-select-on-load></textarea>
-        </md-input-container>
--->
-        <!--
-        <label>Valores</label>
-        <md-input-container class="md-block" ng-repeat="valor in vm.valores track by $index">           
-            <input type="text" placeholder="Adiocione um novo valor" ng-model="valor.texto" ng-click="vm.adicionarValor($index);"/>
-        </md-input-container>
--->
+                    <md-input-container class="md-block" ng-repeat="valor in vm.valores track by $index">
+                        <input type="text" placeholder="Adiocione um novo valor" ng-model="valor.texto" ng-click="vm.adicionarValor($index);" />
+                    </md-input-container>
 
-        <md-card class="md-padding" id="premios">
-            <h2>
-                <a>Serviços Contábeis</a>
-                <md-button class="md-primary md-raised" ng-click="vm.adicionarNovaCategoria($event);">Adicionar nova
-                    categoria</md-button>
-            </h2>
-            <md-divider></md-divider>
+                    <md-divider></md-divider>
 
-            <md-card-content class="md-padding">
-                <md-card ng-repeat="servico in vm.servicosPrestados  track by $index" style="float: left; position: relative; max-width: 350px; min-height: 450px !important;">
-                    <div class="card-header">
+                    <md-card class="md-padding" id="premios">
                         <div layout="row">
-                            <div layout="column" flex="60" layout-align="center center">
-                                <span class="card-header-title">{{servico.categoria}}</span>
+                            <div layout="column" flex="80">
+                                <h2><a>Serviços Contábeis</a></h2>
                             </div>
-                            <div layout="column" flex="20" layout-align="start center">
-                                <md-button ng-click="vm.editarCategoria($event, servico, $index)">
-                                    <md-icon md-font-icon="fa fa-edit" class="white"></md-icon>
-                                </md-button>
-                            </div>
-                            <div layout="column" flex="20" layout-align="start center">
-                                <md-button ng-click="vm.excluirCategoria($event, $index)">
-                                    <md-icon md-font-icon="fa fa-trash" class="white"></md-icon>
-                                </md-button>
+                            <div layout="column" flex="20">
+                                <md-button class="md-primary md-raised" ng-click="vm.adicionarNovaCategoria($event);">Adicionar
+                                    nova
+                                    categoria</md-button>
                             </div>
                         </div>
-                    </div>
-                    <md-divider></md-divider>
-                    </div>
-                    <md-card-content>
-                        <li ng-repeat="serv in servico.servicos">{{serv.nome}}</li>
-                    </md-card-content>
-                </md-card>
 
+                        <md-divider></md-divider>
+
+                        <md-card-content class="md-padding">
+                            <md-card ng-repeat="servico in vm.servicosPrestados  track by $index" style="float: left; position: relative; max-width: 350px; min-height: 450px !important;">
+                                <div class="card-header">
+                                    <div layout="row">
+                                        <div layout="column" flex="60" layout-align="center center">
+                                            <span class="card-header-title">{{servico.categoria}}</span>
+                                        </div>
+                                        <div layout="column" flex="20" layout-align="start center">
+                                            <md-button ng-click="vm.editarCategoria($event, servico, $index)">
+                                                <md-icon md-font-icon="fa fa-edit" class="white"></md-icon>
+                                            </md-button>
+                                        </div>
+                                        <div layout="column" flex="20" layout-align="start center">
+                                            <md-button ng-click="vm.excluirCategoria($event, $index)">
+                                                <md-icon md-font-icon="fa fa-trash" class="white"></md-icon>
+                                            </md-button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <md-divider></md-divider>
+                                </div>
+                                <md-card-content>
+                                    <li ng-repeat="serv in servico.servicos">{{serv.nome}}</li>
+                                </md-card-content>
+                            </md-card>
+
+                        </md-card-content>
+
+                    </md-card>
+
+                </form>
             </md-card-content>
-
         </md-card>
-        <div>
-            <md-button type="submit">Salvar</md-button>
-        </div>
-    </form>
-</md-card-content>
+    </md-content>
+</section>

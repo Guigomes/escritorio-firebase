@@ -8,7 +8,7 @@
         </md-toolbar>
         <md-content layout-padding ng-controller="AdminController">
             <md-list class="md-dense" flex>
-                <md-list-item ng-click="vm.acionarMenu('home')">
+                <md-list-item ng-click="vm.acionarMenu('logado')">
                     <md-icon md-font-set="fas fa-home fa-2x"></md-icon>
                     <p class="primary">Pagina Inicial</p>
                 </md-list-item>
@@ -18,11 +18,16 @@
                     <md-icon md-font-set="fas fa-edit fa-2x"></md-icon>
                     <p class="primary">Editar Textos</p>
                 </md-list-item>
+
+                <md-divider></md-divider>
+
                 <md-list-item ng-click="vm.acionarMenu('editar-noticias')">
 
                     <md-icon md-font-set="fas fa-newspaper fa-2x"></md-icon>
                     <p class="primary">Gerenciar Notícias</p>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item ng-click="vm.acionarMenu('/')">
                     <md-icon md-font-set="fas fa-sign-out-alt fa-2x"></md-icon>
                     <p class="primary">Sair</p>
@@ -33,28 +38,34 @@
     </md-sidenav>
 
     <md-content flex layout-padding class="height100">
+
         <md-button class="md-primary md-raised" ng-click="vm.abrirNovaNoticia($event)">Nova noticia</md-button>
 
-        <md-card ng-repeat="noticia in vm.noticias | reverse">
-            <md-card-header>
-                <md-card-header-text>
-                    <span class="md-title">{{noticia.titulo}}</span>
-                    <span class="md-subhead" ng-show="noticia.dataFim">de {{noticia.dataInicio | date :
-                        "dd/MM/yyyy"}} até {{noticia.dataFim |
-                        date : "dd/MM/yyyy"}}</span>
-                    <span class="md-subhead" ng-show="!noticia.dataFim">a partir de {{noticia.dataInicio |
-                        date :
-                        "dd/MM/yyyy"}} </span>
-                </md-card-header-text>
-                <md-button class="md-primary md-raised" ng-click="vm.editarNoticia($event, noticia)">Editar</md-button>
-                <md-button class="md-accent md-raised" ng-click="vm.excluirNoticia($event,noticia);">Excluir</md-button>
-            </md-card-header>
-
+        <md-card>
+            <h2>
+                <a>Notícias</a>
+            </h2>
             <md-divider></md-divider>
-            <md-card-content class="md-padding" style="text-align: justify">
-                {{noticia.textoNoticia}}
-            </md-card-content>
-        </md-card>
+            <md-card ng-repeat="noticia in vm.noticias | reverse">
+                <md-card-header>
+                    <md-card-header-text>
+                        <span class="md-title">{{noticia.titulo}}</span>
+                        <span class="md-subhead" ng-show="noticia.dataFim">de {{noticia.dataInicio | date :
+                            "dd/MM/yyyy"}} até {{noticia.dataFim |
+                            date : "dd/MM/yyyy"}}</span>
+                        <span class="md-subhead" ng-show="!noticia.dataFim">a partir de {{noticia.dataInicio |
+                            date :
+                            "dd/MM/yyyy"}} </span>
+                    </md-card-header-text>
+                    <md-button class="md-primary md-raised" ng-click="vm.editarNoticia($event, noticia)">Editar</md-button>
+                    <md-button class="md-accent md-raised" ng-click="vm.excluirNoticia($event,noticia);">Excluir</md-button>
+                </md-card-header>
 
+                <md-divider></md-divider>
+                <md-card-content class="md-padding" style="text-align: justify">
+                    {{noticia.textoNoticia}}
+                </md-card-content>
+            </md-card>
+        </md-card>
     </md-content>
 </section>

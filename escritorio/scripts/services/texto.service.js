@@ -41,8 +41,7 @@
           servicos: servicosIterador
         });
       }
-      console.log("SERVICOS SALVAR", servicosSalvar);
-      console.log("DadosService", DadosService.servicosContabeis);
+
       return firebase
         .database()
         .ref("servicos/")

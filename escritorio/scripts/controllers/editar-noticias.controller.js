@@ -1,12 +1,19 @@
 angular.module("app").controller("EditarNoticiasController", EditarNoticiasController);
 
-function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialog) {
+function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialog, $state) {
   var vm = this;
   vm.textoQuemSomos = DadosService.textoQuemSomos;
   vm.servicosContabeis = DadosService.servicosContabeis;
   vm.abrirNovaNoticia = abrirNovaNoticia;
   vm.editarNoticia = editarNoticia;
   vm.excluirNoticia = excluirNoticia;
+
+
+  vm.acionarMenu = acionarMenu;
+
+  function acionarMenu(state) {
+    $state.go(state);
+  }
   listarNoticias();
 
   function listarNoticias() {
@@ -44,7 +51,6 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
 
         Toast.mostrarErro("Erro ao excluir notícia. " + err);
       });
-      console.log("noticia a ser excluida", noticia);
 
     }, function () {
       $scope.status = 'You decided to keep your debt.';

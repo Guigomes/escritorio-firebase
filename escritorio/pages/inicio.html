@@ -1,5 +1,5 @@
-<md-card class="card-aviso-simples">
-    <md-card-title-text class="animated bounce" style="padding-left: 15px; padding-top: 2px;">
+<md-card class="card-aviso-simples" ng-class="vm.animarAviso">
+    <md-card-title-text style="padding-left: 15px; padding-top: 2px;">
         <b>Simples</b>
     </md-card-title-text>
     <md-divider></md-divider>
@@ -16,60 +16,77 @@
             <md-icon md-font-icon="fa fa-building" class="white"></md-icon>O Escritório
         </md-tab-label>
         <md-tab-body>
+            <div layout="row">
+                <md-card class="md-padding" style="margin-top: 15px;" id="escritorio">
+                    <h2>
+                        <a>Quem Somos</a>
+                    </h2>
+                    <md-divider></md-divider>
 
-            <md-card class="md-padding" style="margin-top: 15px;" id="escritorio">
-                <h2>
-                    <a>O Escritório</a>
-                </h2>
-                <md-divider></md-divider>
-
-                <md-card-content class="md-padding" style="text-align: justify">
-                    <div layout="row">
-                        <div layout="column" flex="70">
-                            {{vm.textoQuemSomos}}
-                        </div>
-
-                    </div>
-                </md-card-content>
-
-                <md-card>
-                    <md-card-title>Missão</md-card-title>
-                    <md-card-content class="md-padding" style="text-align: justify">
+                    <md-card-content class="md-padding no-padding-vertical" style="text-align: justify">
                         <div layout="row">
                             <div layout="column" flex="70">
-                                {{vm.textoMissao}}
-                            </div>
 
+                                <md-progress-circular ng-disabled="!vm.progressQuemSomos" md-mode="indeterminate"></md-progress-circular>
+
+
+                                {{vm.textoQuemSomos}}
+                            </div>
+                            <div layout="column" flex="30">
+                                <img src="../assets/contabilidade.png" style="max-height: 200px;" />
+                            </div>
                         </div>
                     </md-card-content>
-                </md-card>
-                <md-card>
-                    <md-card-title>Visão</md-card-title>
-                    <md-card-content class="md-padding" style="text-align: justify">
-                        <div layout="row">
-                            <div layout="column" flex="70">
-                                {{vm.textoVisao}}
-                            </div>
 
-                        </div>
+
+
+                </md-card>
+            </div>
+            <div layout="row" layout-align="space-around start">
+
+                <md-card class="card-menor md-padding">
+                    <h2>
+                        <a>Missão</a>
+                    </h2>
+                    <md-divider></md-divider>
+
+                    <md-card-content class=" no-padding-vertical" style="text-align: center">
+                        <md-progress-circular ng-disabled="!vm.progressMissao" md-mode="indeterminate"></md-progress-circular>
+
+                        {{vm.textoMissao}}
+
+
+
                     </md-card-content>
                 </md-card>
-                <md-card>
-                    <md-card-title>Valores</md-card-title>
-                    <md-card-content class="md-padding" style="text-align: justify">
-                        <div layout="row">
-                            <div layout="column" flex="70">
-                                <li ng-repeat="valor in vm.textoValores">{{valor}}</li>
+                <md-card class="card-menor md-padding">
+                    <h2>
+                        <a>Visão</a>
+                    </h2>
+                    <md-divider></md-divider>
+                    <md-card-content class=" no-padding-vertical" style="text-align: center">
+                        <md-progress-circular ng-disabled="!vm.progressVisao" md-mode="indeterminate"></md-progress-circular>
 
+                        {{vm.textoVisao}}
 
-                            </div>
-
-                        </div>
                     </md-card-content>
                 </md-card>
+                <md-card class="card-menor md-padding">
+                    <h2>
+                        <a>Valores</a>
+                    </h2>
+                    <md-divider></md-divider>
+
+                    <md-card-content class=" no-padding-vertical" style="text-align: left;">
+                        <md-progress-circular ng-disabled="!vm.progressValores" md-mode="indeterminate"></md-progress-circular>
+
+                        <li ng-repeat="valor in vm.textoValores" ng-show="valor != ''">{{valor}}</li>
 
 
-            </md-card>
+
+                    </md-card-content>
+                </md-card>
+            </div>
 
         </md-tab-body>
     </md-tab>
@@ -90,7 +107,7 @@
 
                     <md-card ng-repeat="servico in vm.servicosContabeis" style="float: left; position: relative; max-width: 350px; min-height: 450px !important;">
                         <div class="card-header">
-                            <h3>{{servico.categoria}}</h3>
+                            <h3 style="padding-left:5px;">{{servico.categoria}}</h3>
                             <md-divider></md-divider>
                         </div>
                         <md-card-content>
@@ -117,13 +134,13 @@
                 </h2>
                 <md-divider></md-divider>
 
-                <md-card-content style="padding-left: 0px !important">
+                <md-card-content style="padding-left: 0px !important" class="no-padding-vertical">
 
                     <div layout="row">
                         <div layout="column" flex="40">
                             <md-card>
                                 <div class="card-header">
-                                    <h5>Entre em contato</h5>
+                                    <h3>Entre em contato</h3>
                                     <md-divider></md-divider>
                                 </div>
                                 <md-card-content class="content-endereco">
@@ -140,35 +157,36 @@
                         <div layout="column" flex="60">
                             <md-card>
 
-                                <md-card-content>
+                                <md-card-content class="no-padding-vertical">
                                     <form class="event-dialog-form" name="eventForm">
-                                        <md-input-container class="md-block">
+                                        <md-input-container class="md-block input-container-margin-menor">
                                             <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
 
                                             <label>Nome</label>
                                             <input ng-model="vm.comunicacao.nome" required>
                                         </md-input-container>
-                                        <md-input-container class="md-block">
+                                        <md-input-container class="md-block input-container-margin-menor">
                                             <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
 
                                             <label>E-mail</label>
                                             <input ng-model="vm.comunicacao.email" required type="email">
                                         </md-input-container>
-                                        <md-input-container class="md-block">
+                                        <md-input-container class="md-block input-container-margin-menor">
                                             <md-icon md-font-icon="zmdi zmdi-phone"></md-icon>
 
                                             <label>Telefone</label>
                                             <input ng-model="vm.comunicacao.telefone" type="tel">
                                         </md-input-container>
-                                        <md-input-container class="md-block">
+                                        <md-input-container class="md-block input-container-margin-menor">
                                             <label>Assunto</label>
                                             <input ng-model="vm.comunicacao.assunto" required>
                                         </md-input-container>
-                                        <md-input-container class="md-block">
+                                        <md-input-container class="md-block input-container-margin-menor">
                                             <label translate>Mensagem</label>
                                             <textarea rows="5" ng-model="vm.comunicacao.mensagem"></textarea>
                                         </md-input-container>
-                                        <md-button class="button-primary">Enviar mensagem</md-button>
+                                        <md-button class="button-primary" ng-click="vm.enviarMensagem();">Enviar
+                                            mensagem</md-button>
                                     </form>
                                 </md-card-content>
                                 <md-card>
@@ -202,7 +220,7 @@
                         <div layout="column" flex="30">
                             <md-card>
                                 <div class="card-header">
-                                    <h5>Endereço</h5>
+                                    <h3>Endereço</h3>
                                     <md-divider></md-divider>
                                 </div>
                                 <md-card-content class="content-endereco">
@@ -245,6 +263,11 @@
                         <md-card-header>
                             <md-card-header-text>
                                 <span class="md-title">{{noticia.titulo}}</span>
+                                <span class="md-subtitle" style="font-size: 14px;">
+                                    <md-icon md-font-icon="fa fa-calendar-alt"></md-icon>{{noticia.dataInicio
+                                    |
+                                    date : 'dd/MM/yyyy'}}
+                                </span>
 
                             </md-card-header-text>
 

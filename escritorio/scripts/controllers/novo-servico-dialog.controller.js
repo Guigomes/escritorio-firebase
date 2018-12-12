@@ -6,7 +6,6 @@ function NovoServicoDialogController($scope, $mdDialog, Toast, Noticia, items) {
     vm.salvarCategoria = salvarCategoria;
     vm.adicionarNovoServico = adicionarNovoServico;
     vm.items = items;
-    console.log("items", items);
     if (vm.items != undefined) {
         vm.title = "Editar Categoria";
         vm.servico = vm.items;

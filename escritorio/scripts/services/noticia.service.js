@@ -10,7 +10,6 @@
       listarNoticias: listarNoticias
     };
     function atualizarNoticia(noticia, id) {
-      alert("PASSEI AQUI2");
       var updates = {};
       updates['/noticia/' + id] = {
         noticia: noticia

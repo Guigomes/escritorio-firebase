@@ -1,4 +1,4 @@
-(function() {
+(function () {
   "use strict";
 
   angular.module("app").factory("Authentication", Authentication);
@@ -43,7 +43,6 @@
     }
 
     function isUsuarioLogado(callback) {
-      console.log("CHAMOU");
       return firebase.auth().onAuthStateChanged(callback);
     }
     function inicializar(telaLogado) {
@@ -92,7 +91,6 @@
             // The start method will wait until the DOM is loaded.
             vm.ui.start("#firebaseui-auth-container", uiConfig);
 
-            console.log("Deslogado");
           }
         },
         function(error) {
@@ -103,7 +101,6 @@
 
     function logout() {
       vm.ui.delete();
-      console.log("DELETE");
     }
     return {
       inicializar: inicializar,

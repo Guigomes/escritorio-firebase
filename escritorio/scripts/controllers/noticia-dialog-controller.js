@@ -25,10 +25,11 @@ function DialogController($scope, $mdDialog, Toast, Noticia, items) {
     function salvarNoticia() {
 
 
-
-
+        vm.noticia.dataInicio.setHours(0);
         vm.noticia.dataInicio = vm.noticia.dataInicio.toString();
-        if (vm.noticia.dataFim !== undefined) {
+        if (vm.noticia.dataFim !== undefined && vm.noticia.dataFim !== "") {
+
+            vm.noticia.dataFim.setHours(0);
             vm.noticia.dataFim = vm.noticia.dataFim.toString();
         } else {
             vm.noticia.dataFim = "";

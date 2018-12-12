@@ -1,6 +1,6 @@
 angular.module("app").controller("EditarController", EditarController);
 
-function EditarController($scope, Textos, Toast, $mdDialog) {
+function EditarController($scope, Textos, Toast, $mdDialog, $state) {
   var vm = this;
 
   vm.adicionarValor = adicionarValor;
@@ -8,6 +8,11 @@ function EditarController($scope, Textos, Toast, $mdDialog) {
   vm.adicionarNovaCategoria = adicionarNovaCategoria;
   vm.editarCategoria = editarCategoria;
   vm.excluirCategoria = excluirCategoria;
+  vm.acionarMenu = acionarMenu;
+
+  function acionarMenu(state) {
+    $state.go(state);
+  }
   init();
 
   function init() {
@@ -17,14 +22,7 @@ function EditarController($scope, Textos, Toast, $mdDialog) {
 
       let servicos = res.servicos;
 
-      console.log("servicos", servicos);
 
-      /*
-      for (var i in servicos) {
-        vm.servicosPrestados.push({});
-
-        servicos[i].servicos.push("");
-      }*/
       vm.servicosPrestados = servicos;
 
     }, (erro) => {
@@ -39,6 +37,27 @@ function EditarController($scope, Textos, Toast, $mdDialog) {
     }, (erro) => {
       console.log("Erro", erro);
     });
+
+
+    Textos.buscarTexto(2).then((res) => {
+      vm.textoMissao = res.texto;
+      vm.progressMissao = false;
+
+      $scope.$apply();
+    }, (erro) => {
+      tratarErro(erro);
+    });
+
+
+    Textos.buscarTexto(3).then((res) => {
+      vm.textoVisao = res.texto;
+      vm.progressVisao = false;
+
+      $scope.$apply();
+    }, (erro) => {
+      tratarErro(erro);
+    });
+
 
   }
 
@@ -92,9 +111,7 @@ function EditarController($scope, Textos, Toast, $mdDialog) {
       },
     })
       .then(function (answer) {
-        console.log("Servicos", vm.servicosPrestados[index]);
 
-        console.log("Servico", answer);
         // listarNoticias();
         Textos.salvarServicosPrestados(vm.servicosPrestados).then((response) => {
           Toast.mostrarMensagem("Serviços salvos com sucesso");
@@ -126,14 +143,12 @@ function EditarController($scope, Textos, Toast, $mdDialog) {
     })
       .then(function (servico) {
         vm.servicosPrestados.push(servico);
-        console.log("Servicos Prestados", vm.servicosPrestados);
         Textos.salvarServicosPrestados(vm.servicosPrestados).then((response) => {
           Toast.mostrarMensagem("Serviços salvos com sucesso");
         }, (err) => {
           Toast.mostrarErro("Erro ao salvar serviços. " + err);
         });
 
-        console.log("Servico a ser salvo", servico);
 
       }, function () {
         $scope.status = 'You cancelled the dialog.';
@@ -166,9 +181,6 @@ function EditarController($scope, Textos, Toast, $mdDialog) {
         texto: valores[i]
       });
     }
-    vm.valores.push({
-      texto: ""
-    });
 
 
 
@@ -194,18 +206,30 @@ function EditarController($scope, Textos, Toast, $mdDialog) {
     }
 
     Textos.adicionarTexto(4, textoValor).then((response) => {
-      Toast.mostrarMensagem("Textos salvos com sucesso");
+      //   Toast.mostrarMensagem("Textos salvos com sucesso");
     }, (err) => {
       Toast.mostrarErro("Erro ao salvar textos. " + err);
     });
 
+    Textos.adicionarTexto(2, vm.textoMissao).then((response) => {
+      //     Toast.mostrarMensagem("Textos salvos com sucesso");
+    }, (err) => {
+      Toast.mostrarErro("Erro ao salvar textos. " + err);
+    });
+
+    Textos.adicionarTexto(3, vm.textoVisao).then((response) => {
+      //    Toast.mostrarMensagem("Textos salvos com sucesso");
+    }, (err) => {
+      Toast.mostrarErro("Erro ao salvar textos. " + err);
+    });
 
     Textos.adicionarTexto(1, vm.textoQuemSomos).then((response) => {
-      Toast.mostrarMensagem("Textos salvos com sucesso");
+      //    Toast.mostrarMensagem("Textos salvos com sucesso");
     }, (err) => {
       Toast.mostrarErro("Erro ao salvar textos. " + err);
     });
-
+    Toast.mostrarMensagem("Textos salvos com sucesso");
+    init();
   }
 
 

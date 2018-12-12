@@ -15,8 +15,7 @@ function PrincipalController(
 ) {
   var vm = this;
 
-  Authentication.isUsuarioLogado(function(user) {
-    console.log("User", user);
+  Authentication.isUsuarioLogado(function (user) {
     if (user != null) {
       inti();
     } else {
@@ -29,12 +28,12 @@ function PrincipalController(
 
   //init();
 
-  vm.instalar = function() {
+  vm.instalar = function () {
     Authentication.instalar();
   };
 
   function init() {
-    $rootScope.$on("available", function() {
+    $rootScope.$on("available", function () {
       vm.mostrarInstalar = true;
       $rootScope.$apply();
     });
@@ -96,12 +95,10 @@ function PrincipalController(
       .auth()
       .signOut()
       .then(
-        function() {
+        function () {
           $state.go("/");
-          console.log("logout");
         },
-        function(error) {
-          console.log("logout error");
+        function (error) {
         }
       );
   }
@@ -117,8 +114,7 @@ function PrincipalController(
         fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
       })
       .then(
-        function(novoUsuario) {
-          console.log("novousuario", novoUsuario);
+        function (novoUsuario) {
           User.adicionarUsuario(
             novoUsuario.apelido,
             novoUsuario.nivel,
@@ -131,9 +127,8 @@ function PrincipalController(
               Toast.mostrarErro(erro);
             }
           );
-          console.log("novoUsuario", novoUsuario);
         },
-        function() {
+        function () {
           $scope.status = "You cancelled the dialog.";
         }
       );
@@ -161,12 +156,12 @@ function PrincipalController(
                 */ else
       window.open(
         "https://maps.google.com/maps?q=" +
-          lat +
-          ", + " +
-          long +
-          "(" +
-          nome +
-          ")&amp;ll="
+        lat +
+        ", + " +
+        long +
+        "(" +
+        nome +
+        ")&amp;ll="
       );
   }
 }
