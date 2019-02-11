@@ -5,6 +5,8 @@ function InicioController($location, $anchorScroll, $interval, Textos, $scope, N
   vm.enviarMensagem = enviarMensagem;
   init();
 
+
+
   function enviarMensagem() {
     Toast.mostrarMensagem("Mensagem enviada com sucesso");
     vm.comunicacao = {};
@@ -13,11 +15,14 @@ function InicioController($location, $anchorScroll, $interval, Textos, $scope, N
   function tratarErro(err) {
     console.log("erro", err);
   }
+
+
   function init() {
     vm.progressQuemSomos = true;
     vm.progressVisao = true;
     vm.progressMissao = true;
     vm.progressValores = true;
+    vm.mostrarAreaCliente = false;
 
 
 
@@ -145,5 +150,3 @@ function InicioController($location, $anchorScroll, $interval, Textos, $scope, N
   }
 
 }
-
-

@@ -1,16 +1,8 @@
-<!--
-<md-card class="card-aviso-simples" ng-class="vm.animarAviso">
-    <md-card-title-text style="padding-left: 15px; padding-top: 2px;">
-        <b>Simples</b>
-    </md-card-title-text>
-    <md-divider></md-divider>
-    <md-card-content class="card-content-aviso-simples" style="text-align: justify">
-        <span> Faça parte do simples.</span> <a href="http://www.rhnetsocial.com.br/aquariuscg">Clique aqui para fazer
-            seu cadastro</a></span>
+<div layout="row" layout-align="center center" style="background-color: azure">
+    <md-button class="md-primary md-raised bold" ng-click="vm.mostrarAreaCliente = true">Acesse a área restrita ao
+        cliente</md-button>
 
-    </md-card-content>
-</md-card>
--->
+</div>
 <md-tabs class="md-accent height100" md-selected="0" md-align-tabs="top">
     <md-tab id="escritorio">
         <md-tab-label class="primary-back">
@@ -288,16 +280,19 @@
             </md-card>
         </md-tab-body>
     </md-tab>
-    <md-tab id="cliente">
-        <md-tab-label>
+
+    <md-tab id="cliente" ng-if="vm.mostrarAreaCliente" md-active="vm.mostrarAreaCliente">
+        <md-tab-label ng-show="vm.mostrarAreaCliente">
             <md-icon md-font-icon="fa fa-user" class="white"></md-icon>
             Área restrita ao cliente
         </md-tab-label>
         <md-tab-body>
 
+
             <iframe ng-src="https://www.rhnetsocial.com.br/aquariuscg" layout="column" style="width: 100%; height: 100%">
                 Something wrong...
             </iframe>
+
         </md-tab-body>
     </md-tab>
 
