@@ -1,0 +1,54 @@
+{
+    "Name": "Agronegócios",
+    "Icon": "hammer",
+    "Description": "Produtos e Serviço para agronegócios",
+    "defaultApp": {
+        "id": "gst-visitas-gamapp"
+    },
+    "permissions": [
+        "GSTF"
+    ]
+    "SideMenu": {
+        "items": []
+    },
+    "Footer": {
+        "items": [
+            {
+                "id": "gst-visitas-gamapp",
+                "Icon": "home",
+                "Name": "Inicio",
+                "Service": {
+                    "name": "aba_1",
+                    "payload": {
+                        "route": "GSTInicioPage"
+                    }
+                }
+            },
+            {
+                "id": "gst-visitas-gamapp",
+                "Icon": "md-warning",
+                "Name": "Pendencias",
+                "Service": {
+                    "name": "aba_pendencias",
+                    "payload": {
+                        "route": "GSTTelaPendencias"
+                    }
+                }
+            }
+        ]
+    },
+    "Shortcuts": {
+        "items": [
+            {
+                "id": "gst-visitas-gamapp",
+                "Name": "Offline",
+                "Service": {
+                    "name": "GSTListaDetalhesOffline",
+                    "payload": {
+                        "route": "GSTListaDetalhesOffline"
+                    }
+                }
+            }
+        ]
+    }
+},

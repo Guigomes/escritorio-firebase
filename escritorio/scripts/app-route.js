@@ -81,6 +81,16 @@ angular
             templateUrl: "/pages/noticias.html",
           }
         }
+      }).state("mudanca", {
+        url: "/mudanca/:id",
+        name: "mudanca",
+        views: {
+          viewContent: {
+            controller: "MudancaController",
+            controllerAs: "vm",
+            templateUrl: "/pages/mudanca.html",
+          }
+        }
       });
 
     $urlRouterProvider.otherwise("/");
