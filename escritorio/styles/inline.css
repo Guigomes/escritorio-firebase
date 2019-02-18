@@ -69,7 +69,9 @@ md-tab-content {
   color: #00BCD4 !important;
 
 }
-
+.title{
+  color: #00BCD4;
+}
 .titulo-noticias-atual {
   font-weight: bold;
   font-size: 14px;

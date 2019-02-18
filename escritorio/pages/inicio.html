@@ -286,13 +286,48 @@
             <md-icon md-font-icon="fa fa-user" class="white"></md-icon>
             Área restrita ao cliente
         </md-tab-label>
-        <md-tab-body>
+        <md-tab-body >
+<md-content layout="column" layout-align="center center">
+            <md-card class="md-padding" style="margin-top: 50px;" flex="50">
+                <div layout="row" layout="center center">
+                        <img src="../assets/logo.png" style="width: 50px; height: 50px;"/>
 
-
+                    <h2 class="title">Área do Cliente</h2>
+                </div>
+                <md-divider></md-divider>
+            
+                <md-card-content class="md-padding" style="text-align: justify">
+                    <p>Digite o seu usuário e senha para entrar no sistema</p>
+                    <form name="projectForm" method="POST" action="https://rhnetsocial.com.br/loginFormDo.php" layout="column">
+            
+                        <md-input-container>
+                            <label>Usuário</label>
+                            <input type="text" name="login" size="20"/>
+                          <!-- <input type="text" ng-model="vm.usuario" required>-->
+                        </md-input-container>
+            
+                        <md-input-container>
+                            <label>Senha</label>
+                            <input type="password" name="senha" size="8"/>
+                            <!--<input ng-model="vm.senha" type="password" required>-->
+                        </md-input-container>
+                        <input type="hidden" name="from" value="https://escritorio-aquarius.firebaseapp.com/#!/"/>
+                        <input type="hidden" name="clienteId" size="20" value="7423"/>
+                        <div layout="row" layout-align="center center">
+                            <md-button type="submit" class="md-primary md-raised">Entrar</md-button>
+                        </div>
+            
+            
+                    </form>
+                </md-card-content>
+            
+            </md-card>
+        </md-content>
+<!--
             <iframe ng-src="https://www.rhnetsocial.com.br/aquariuscg" layout="column" style="width: 100%; height: 100%">
                 Something wrong...
             </iframe>
-
+            -->
         </md-tab-body>
     </md-tab>
 

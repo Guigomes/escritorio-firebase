@@ -1,6 +1,6 @@
 angular.module("app").controller("InicioController", InicioController);
 
-function InicioController($location, $anchorScroll, $interval, Textos, $scope, Noticia, DadosService, Toast) {
+function InicioController($location, $anchorScroll, $interval, Textos, $scope, Noticia,  Toast) {
   var vm = this;
   vm.enviarMensagem = enviarMensagem;
   init();
@@ -15,6 +15,8 @@ function InicioController($location, $anchorScroll, $interval, Textos, $scope, N
   function tratarErro(err) {
     console.log("erro", err);
   }
+
+  console.log("PATH", $location.path());
 
 
   function init() {
