@@ -15,7 +15,7 @@ function InicioController($location, $anchorScroll, $interval, Textos, $scope, N
   }
 
   function enviarMensagem() {
-    Toast.mostrarMensagem("Mensagem enviada com sucesso2");
+    Toast.mostrarMensagem("Mensagem enviada com sucesso");
     vm.comunicacao.data = new Date();
     Textos.adicionarFaleConosco(vm.comunicacao);
     vm.comunicacao = null;

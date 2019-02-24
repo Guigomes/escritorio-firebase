@@ -14,7 +14,7 @@ exports.enviarEmailFaleConosco = functions.database.ref('/faleconosco/{pushId}')
     let corpoHtml = "<p>Você recebeum um contato de " + faleconosco.nome + ".</p>"
     corpoHtml += "<p>E-mail: " + faleconosco.email + "</p>";
     if (faleconosco.telefone != null) {
-        corpoHtml += "<p>Telefone: " + faleconosco + "</p>";
+        corpoHtml += "<p>Telefone: " + faleconosco.telefone + "</p>";
     } else {
         corpoHtml += "<p>Telefone: Não informado </p>";
     }
