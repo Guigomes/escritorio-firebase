@@ -6,6 +6,8 @@
   function Textos(DadosService) {
     return {
       adicionarTexto: adicionarTexto,
+      adicionarFaleConosco: adicionarFaleConosco,
+
       buscarTexto: buscarTexto,
       salvarServicosPrestados: salvarServicosPrestados,
       listarServicosPrestados: listarServicosPrestados
@@ -18,6 +20,17 @@
         .set({
           texto: texto
         });
+    }
+
+    function adicionarFaleConosco(faleconosco) {
+
+      var key = firebase.database().ref().child('faleconosco').push().key;
+      return firebase
+        .database()
+        .ref("faleconosco/" + key)
+        .set({
+          faleconosco: faleconosco
+        }).then(function (response) {}, function (error) {});
     }
 
     function salvarServicosPrestados(servicos) {

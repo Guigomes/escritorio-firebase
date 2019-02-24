@@ -4,6 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+
+
   <title>Escritório Aquarius</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -36,6 +41,7 @@
   <link rel="stylesheet" href="styles/inline.css" />
   <link rel="stylesheet" href="styles/animate.css" />
   <link rel="stylesheet" href="styles/animations.css" />
+  <script src="bower_components/ngMask/dist/ngMask.min.js"></script>
 
 
   <link rel="stylesheet" href="styles/triangular.css" />
@@ -58,6 +64,18 @@
   <script src="scripts/controllers/novo-servico-dialog.controller.js"></script>
 
   <script src="scripts/factory/usuario.factory.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135084570-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-135084570-1');
+  </script>
 
   <style media="screen">
     body {
@@ -170,7 +188,7 @@
 
         <div layout="column" class="divContato" layout-align="center start" flex="10">
 
-          <img src="assets/quality.jpg" style="max-height: 80px;" title="Ganhador do Prêmio Quality Brasil 2014" alt="Ganhador do Prêmio Quality Brasil">
+          <img src="assets/quality.png" style="max-height: 80px;" title="Ganhador do Prêmio Quality Brasil 2014" alt="Ganhador do Prêmio Quality Brasil">
         </div>
 
       </div>

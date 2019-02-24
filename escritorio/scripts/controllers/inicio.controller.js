@@ -1,22 +1,30 @@
 angular.module("app").controller("InicioController", InicioController);
 
-function InicioController($location, $anchorScroll, $interval, Textos, $scope, Noticia,  Toast) {
+function InicioController($location, $anchorScroll, $interval, Textos, $scope, Noticia, Toast, $sce) {
   var vm = this;
   vm.enviarMensagem = enviarMensagem;
   init();
 
+  var paramValue = $location.search().msgSistema;
 
+
+
+  vm.errologin = $sce.trustAsHtml(paramValue);;
+  if (vm.errologin !== undefined) {
+    vm.mostrarAreaCliente = true;
+  }
 
   function enviarMensagem() {
-    Toast.mostrarMensagem("Mensagem enviada com sucesso");
-    vm.comunicacao = {};
+    Toast.mostrarMensagem("Mensagem enviada com sucesso2");
+    vm.comunicacao.data = new Date();
+    Textos.adicionarFaleConosco(vm.comunicacao);
+    vm.comunicacao = null;
   }
 
   function tratarErro(err) {
     console.log("erro", err);
   }
 
-  console.log("PATH", $location.path());
 
 
   function init() {

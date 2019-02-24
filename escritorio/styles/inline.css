@@ -28,6 +28,23 @@ md-tab-content {
   margin-bottom: 8px !important;
 }
 
+.progress {
+  margin-top: 10px;
+}
+
+.erro {
+  color: red;
+  font-weight: bold;
+}
+
+h3 {
+  font-weight: bold !important;
+}
+
+.tab-label {
+  font-weight: bold !important;
+}
+
 .no-padding-vertical {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
@@ -38,6 +55,7 @@ md-tab-content {
 }
 
 .card-menor {
+  min-height: 300px;
   font-size: 18px;
   position: relative;
   float: left;
@@ -69,9 +87,11 @@ md-tab-content {
   color: #00BCD4 !important;
 
 }
-.title{
+
+.title {
   color: #00BCD4;
 }
+
 .titulo-noticias-atual {
   font-weight: bold;
   font-size: 14px;

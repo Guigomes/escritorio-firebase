@@ -1,11 +1,12 @@
 angular
   .module("app")
-  .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider, $mdDateLocaleProvider) {
+  .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider, $mdDateLocaleProvider, $locationProvider) {
     $mdThemingProvider
       .theme("default")
       .primaryPalette("blue")
       .accentPalette("red");
 
+    $locationProvider.html5Mode(true);
 
     // Example of a French localization.
     $mdDateLocaleProvider.months = ['janeiro', 'fevereiro', 'março', "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
@@ -33,6 +34,9 @@ angular
       .state("/", {
         url: "/",
         name: "/",
+        params: {
+          msgSistema: null
+        },
         views: {
           viewContent: {
             controller: "InicioController",
@@ -103,4 +107,3 @@ angular.module("app").filter('reverse', function () {
     }
   };
 });
-

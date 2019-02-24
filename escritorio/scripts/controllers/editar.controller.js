@@ -34,9 +34,7 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
       vm.textoQuemSomos = res.texto;
       $scope.$apply();
 
-    }, (erro) => {
-      console.log("Erro", erro);
-    });
+    }, (erro) => {});
 
 
     Textos.buscarTexto(2).then((res) => {
@@ -100,16 +98,16 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
 
   function editarCategoria(ev, servico, index) {
     $mdDialog.show({
-      controller: NovoServicoDialogController,
-      controllerAs: "vm",
-      templateUrl: 'pages/novo-servico-dialog.html',
+        controller: NovoServicoDialogController,
+        controllerAs: "vm",
+        templateUrl: 'pages/novo-servico-dialog.html',
 
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      locals: {
-        items: servico
-      },
-    })
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        locals: {
+          items: servico
+        },
+      })
       .then(function (answer) {
 
         // listarNoticias();
@@ -131,16 +129,16 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
 
   function adicionarNovaCategoria(ev) {
     $mdDialog.show({
-      controller: NovoServicoDialogController,
-      controllerAs: "vm",
-      templateUrl: 'pages/novo-servico-dialog.html',
+        controller: NovoServicoDialogController,
+        controllerAs: "vm",
+        templateUrl: 'pages/novo-servico-dialog.html',
 
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      locals: {
-        items: undefined
-      },
-    })
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        locals: {
+          items: undefined
+        },
+      })
       .then(function (servico) {
         vm.servicosPrestados.push(servico);
         Textos.salvarServicosPrestados(vm.servicosPrestados).then((response) => {
@@ -234,4 +232,3 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
 
 
 }
-
