@@ -1,4 +1,3 @@
-
 angular.module("app").controller("DialogController", DialogController);
 
 function DialogController($scope, $mdDialog, Toast, Noticia, items) {
@@ -16,8 +15,21 @@ function DialogController($scope, $mdDialog, Toast, Noticia, items) {
         vm.noticia = {};
         vm.noticia.dataInicio = new Date();
         vm.noticia.dataFim = undefined;
+        vm.noticia.tipo = 2;
+
         vm.title = "Nova Notícia";
     }
+
+
+    vm.tipos = [{
+        value: 1,
+        texto: "Texto"
+
+    }, {
+        value: 2,
+        texto: "Link"
+    }];
+
 
     vm.minDate = new Date();
     vm.salvarNoticia = salvarNoticia;
@@ -45,28 +57,28 @@ function DialogController($scope, $mdDialog, Toast, Noticia, items) {
 
             titulo: vm.noticia.titulo,
 
-
+            tipo: vm.noticia.tipo
 
         }
 
         if (!vm.isEditar) {
-            Noticia.salvarNoticia(noticiaSalvar).then((response) => {
+            Noticia.salvarNoticia(noticiaSalvar).then(function (response) {
                 Toast.mostrarMensagem("Notícia salva com sucesso");
 
                 $mdDialog.hide("Notícia salva com sucesso");
 
-            }, (err) => {
+            }, function (err) {
                 $mdDialog.cancel();
 
                 Toast.mostrarErro("Erro ao salvar notícia. " + err);
             });
         } else {
-            Noticia.atualizarNoticia(noticiaSalvar, vm.noticia.id).then((response) => {
+            Noticia.atualizarNoticia(noticiaSalvar, vm.noticia.id).then(function (response) {
                 Toast.mostrarMensagem("Notícia alterada com sucesso");
 
                 $mdDialog.hide("Notícia alterada com sucesso");
 
-            }, (err) => {
+            }, function (err) {
                 $mdDialog.cancel();
 
                 Toast.mostrarErro("Erro ao salvar notícia. " + err);

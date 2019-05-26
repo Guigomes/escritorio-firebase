@@ -9,6 +9,7 @@
       atualizarNoticia: atualizarNoticia,
       listarNoticias: listarNoticias
     };
+
     function atualizarNoticia(noticia, id) {
       var updates = {};
       updates['/noticia/' + id] = {
@@ -18,9 +19,8 @@
       return firebase.database().ref().update(updates);
 
     }
+
     function salvarNoticia(noticia) {
-
-
       return firebase
         .database()
         .ref("noticia").push()

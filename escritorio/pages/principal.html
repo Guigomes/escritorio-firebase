@@ -21,6 +21,16 @@
           </md-input-container>
         </div>
         <div layout="row">
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>Tipo da Notícia</label>
+            <md-select ng-model="vm.noticia.tipo">
+              <md-option ng-repeat="tipo in vm.tipos" value="{{tipo.value}}">
+                {{tipo.texto}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout="row">
           <md-input-container>
             <label>Data de Inicio</label>
             <md-datepicker ng-model="vm.noticia.dataInicio" required md-min-date="vm.minDate"></md-datepicker>
@@ -34,14 +44,26 @@
               excluida</div>
           </md-input-container>
         </div>
-        <div layout="row">
+
+        <div layout="row" ng-show="vm.noticia.tipo == 1">
           <md-input-container class="md-block" style="width: 100%;">
-            <label>Notícia</label>
-            <textarea required ng-model="vm.noticia.textoNoticia" md-maxlength="1000" rows="5" md-select-on-load></textarea>
+            <label>Texto da Notícia</label>
+            <textarea required ng-model="vm.noticia.textoNoticia" md-maxlength="1000" rows="5"
+              md-select-on-load></textarea>
           </md-input-container>
 
 
         </div>
+        <div layout="row" ng-show="vm.noticia.tipo == 2">
+          <md-input-container class="md-block" style="width: 100%;">
+            <label>Link da Notícia</label>
+            <input ng-model="vm.noticia.textoNoticia" required>
+
+          </md-input-container>
+
+
+        </div>
+
 
       </div>
     </md-dialog-content>

@@ -18,41 +18,41 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
   function init() {
 
 
-    Textos.listarServicosPrestados().then((res) => {
+    Textos.listarServicosPrestados().then(function (res) {
 
       let servicos = res.servicos;
 
 
       vm.servicosPrestados = servicos;
 
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
 
-    Textos.buscarTexto(1).then((res) => {
+    Textos.buscarTexto(1).then(function (res) {
       vm.textoQuemSomos = res.texto;
       $scope.$apply();
 
-    }, (erro) => {});
+    }, function (erro) {});
 
 
-    Textos.buscarTexto(2).then((res) => {
+    Textos.buscarTexto(2).then(function (res) {
       vm.textoMissao = res.texto;
       vm.progressMissao = false;
 
       $scope.$apply();
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
 
-    Textos.buscarTexto(3).then((res) => {
+    Textos.buscarTexto(3).then(function (res) {
       vm.textoVisao = res.texto;
       vm.progressVisao = false;
 
       $scope.$apply();
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
@@ -73,9 +73,9 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
 
     $mdDialog.show(confirm).then(function () {
       vm.servicosPrestados.splice(index, 1);
-      Textos.salvarServicosPrestados(vm.servicosPrestados).then((response) => {
+      Textos.salvarServicosPrestados(vm.servicosPrestados).then(function (response) {
         Toast.mostrarMensagem("categoria excluida com sucesso");
-      }, (err) => {
+      }, function (err) {
         Toast.mostrarErro("Erro ao excluir notícia. " + err);
       });
 
@@ -111,9 +111,9 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
       .then(function (answer) {
 
         // listarNoticias();
-        Textos.salvarServicosPrestados(vm.servicosPrestados).then((response) => {
+        Textos.salvarServicosPrestados(vm.servicosPrestados).then(function (response) {
           Toast.mostrarMensagem("Serviços salvos com sucesso");
-        }, (err) => {
+        }, function (err) {
           Toast.mostrarErro("Erro ao salvar serviços. " + err);
         });
 
@@ -141,9 +141,9 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
       })
       .then(function (servico) {
         vm.servicosPrestados.push(servico);
-        Textos.salvarServicosPrestados(vm.servicosPrestados).then((response) => {
+        Textos.salvarServicosPrestados(vm.servicosPrestados).then(function (response) {
           Toast.mostrarMensagem("Serviços salvos com sucesso");
-        }, (err) => {
+        }, function (err) {
           Toast.mostrarErro("Erro ao salvar serviços. " + err);
         });
 
@@ -169,7 +169,7 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
 
   }
 
-  Textos.buscarTexto(4).then((res) => {
+  Textos.buscarTexto(4).then(function (res) {
     let valores = res.texto.split('|');
 
     vm.valores = [];
@@ -184,7 +184,7 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
 
 
     $scope.$apply();
-  }, (erro) => {
+  }, function (erro) {
     tratarErro(erro);
   });
 
@@ -203,27 +203,27 @@ function EditarController($scope, Textos, Toast, $mdDialog, $state) {
       }
     }
 
-    Textos.adicionarTexto(4, textoValor).then((response) => {
+    Textos.adicionarTexto(4, textoValor).then(function (response) {
       //   Toast.mostrarMensagem("Textos salvos com sucesso");
-    }, (err) => {
+    }, function (err) {
       Toast.mostrarErro("Erro ao salvar textos. " + err);
     });
 
-    Textos.adicionarTexto(2, vm.textoMissao).then((response) => {
+    Textos.adicionarTexto(2, vm.textoMissao).then(function (response) {
       //     Toast.mostrarMensagem("Textos salvos com sucesso");
-    }, (err) => {
+    }, function (err) {
       Toast.mostrarErro("Erro ao salvar textos. " + err);
     });
 
-    Textos.adicionarTexto(3, vm.textoVisao).then((response) => {
+    Textos.adicionarTexto(3, vm.textoVisao).then(function (response) {
       //    Toast.mostrarMensagem("Textos salvos com sucesso");
-    }, (err) => {
+    }, function (err) {
       Toast.mostrarErro("Erro ao salvar textos. " + err);
     });
 
-    Textos.adicionarTexto(1, vm.textoQuemSomos).then((response) => {
+    Textos.adicionarTexto(1, vm.textoQuemSomos).then(function (response) {
       //    Toast.mostrarMensagem("Textos salvos com sucesso");
-    }, (err) => {
+    }, function (err) {
       Toast.mostrarErro("Erro ao salvar textos. " + err);
     });
     Toast.mostrarMensagem("Textos salvos com sucesso");

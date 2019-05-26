@@ -32,7 +32,7 @@ function AdminController(Textos, Noticia, $state, $interval, $scope) {
     
       Textos.salvarServicosPrestados(a);
       */
-    Noticia.listarNoticias().then((noticias) => {
+    Noticia.listarNoticias().then(function (noticias) {
 
       vm.noticias = [];
 
@@ -71,53 +71,53 @@ function AdminController(Textos, Noticia, $state, $interval, $scope) {
 
     });
 
-    Textos.listarServicosPrestados().then((res) => {
+    Textos.listarServicosPrestados().then(function (res) {
       vm.servicosContabeis = res.servicos;
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
 
-    Textos.buscarTexto(1).then((res) => {
+    Textos.buscarTexto(1).then(function (res) {
       vm.textoQuemSomos = res.texto;
       vm.progressQuemSomos = false;
       $scope.$apply();
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
 
-    Textos.buscarTexto(2).then((res) => {
+    Textos.buscarTexto(2).then(function (res) {
       vm.textoMissao = res.texto;
       vm.progressMissao = false;
 
       $scope.$apply();
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
 
-    Textos.buscarTexto(3).then((res) => {
+    Textos.buscarTexto(3).then(function (res) {
       vm.textoVisao = res.texto;
       vm.progressVisao = false;
 
       $scope.$apply();
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
 
-    Textos.buscarTexto(4).then((res) => {
+    Textos.buscarTexto(4).then(function (res) {
       vm.textoValores = res.texto.split('|');
       vm.progressValores = false;
 
       $scope.$apply();
-    }, (erro) => {
+    }, function (erro) {
       tratarErro(erro);
     });
 
 
-    Noticia.listarNoticias().then((noticias) => {
+    Noticia.listarNoticias().then(function (noticias) {
 
       vm.noticias = [];
 
@@ -135,4 +135,3 @@ function AdminController(Textos, Noticia, $state, $interval, $scope) {
 
   }
 }
-

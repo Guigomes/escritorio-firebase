@@ -8,16 +8,16 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
   vm.editarNoticia = editarNoticia;
   vm.excluirNoticia = excluirNoticia;
 
-
   vm.acionarMenu = acionarMenu;
 
   function acionarMenu(state) {
     $state.go(state);
   }
+
   listarNoticias();
 
   function listarNoticias() {
-    Noticia.listarNoticias().then((noticias) => {
+    Noticia.listarNoticias().then(function (noticias) {
 
       vm.noticias = [];
 
@@ -43,11 +43,11 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
       .cancel('Não');
 
     $mdDialog.show(confirm).then(function () {
-      Noticia.atualizarNoticia(null, noticia.id).then((response) => {
+      Noticia.atualizarNoticia(null, noticia.id).then(function (response) {
         Toast.mostrarMensagem("Notícia excluída com sucesso");
 
         listarNoticias();
-      }, (err) => {
+      }, function (err) {
 
         Toast.mostrarErro("Erro ao excluir notícia. " + err);
       });
@@ -57,18 +57,19 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
     });
 
   }
+
   function abrirNovaNoticia(ev) {
     $mdDialog.show({
-      controller: DialogController,
-      controllerAs: "vm",
-      templateUrl: 'pages/principal.html',
+        controller: DialogController,
+        controllerAs: "vm",
+        templateUrl: 'pages/principal.html',
 
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      locals: {
-        items: undefined
-      },
-    })
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        locals: {
+          items: undefined
+        },
+      })
       .then(function (answer) {
         listarNoticias();
 
@@ -76,18 +77,19 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
         $scope.status = 'You cancelled the dialog.';
       });
   }
+
   function editarNoticia(ev, noticia) {
     $mdDialog.show({
-      controller: DialogController,
-      controllerAs: "vm",
-      templateUrl: 'pages/principal.html',
+        controller: DialogController,
+        controllerAs: "vm",
+        templateUrl: 'pages/principal.html',
 
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      locals: {
-        items: noticia
-      },
-    })
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        locals: {
+          items: noticia
+        },
+      })
       .then(function (answer) {
         listarNoticias();
 
@@ -97,4 +99,3 @@ function EditarNoticiasController(DadosService, Noticia, Toast, $scope, $mdDialo
   }
 
 }
-
